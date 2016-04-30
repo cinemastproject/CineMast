@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CineMast</string>
+    <string name="new_movies">New In Theater</string>
 </resources>

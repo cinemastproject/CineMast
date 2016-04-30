@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class UpcomingFragment extends Fragment implements FetchFromServerUser{
+import Utilities.FetchFromServerTask;
+import Utilities.FetchFromServerUser;
+
+public class UpcomingFragment extends Fragment implements FetchFromServerUser {
     View view;
 
     @Nullable
