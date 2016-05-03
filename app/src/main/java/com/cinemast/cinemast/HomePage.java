@@ -27,7 +27,7 @@ public class HomePage extends FragmentActivity {
         setContentView(R.layout.activity_home_page);
 
         movies = new MoviesFragment();
-        tvShows = new MoviesFragment();
+        tvShows = new TvShowsFragment();
         discover = new MoviesFragment();
         people = new MoviesFragment();
 

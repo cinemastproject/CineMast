@@ -13,6 +13,8 @@ import java.util.List;
 
 import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
+import Utilities.PopularMovieBean;
+import Utilities.PopularMovieParser;
 
 public class PopularMoviesFragment extends Fragment implements FetchFromServerUser {
 
