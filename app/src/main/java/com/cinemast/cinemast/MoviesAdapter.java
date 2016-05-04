@@ -58,7 +58,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(list.get(position).getTitle());
         if(list.get(position).getPoster_path() != null)
-            Picasso.with(context).load("http://image.tmdb.org/t/p/w185/" + list.get(position).getPoster_path())
+            Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + list.get(position).getPoster_path())
                     .error(R.drawable.notfound)
                     .placeholder(R.drawable.movie)
                     .into(holder.poster);

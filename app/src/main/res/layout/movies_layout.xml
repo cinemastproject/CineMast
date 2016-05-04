@@ -2,11 +2,23 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#546e7a">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/background"
+            android:layout_alignBottom="@+id/popularMovies"
+            android:layout_alignParentTop="true" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/popularMovies"
+            android:layout_alignParentTop="true"
+            android:background="#99546e7a"/>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,19 +29,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="280dp"
+            android:layout_below="@+id/in_theater"
             android:id="@+id/top_rated">
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/top_rated"
             android:minHeight="280dp"
             android:id="@+id/up_coming">
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/up_coming"
             android:minHeight="280dp"
             android:id="@+id/popularMovies">
         </FrameLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

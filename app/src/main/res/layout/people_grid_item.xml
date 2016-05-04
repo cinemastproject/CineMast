@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="175dp"
+        android:layout_height="220dp"
+        android:scaleType="fitXY"
+        android:id="@+id/person_image"/>
+    <TextView
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        style="@style/TextStyle"
+        android:textSize="12sp"
+        android:minHeight="40dp"
+        android:id="@+id/person_name"
+        android:background="#607d8b"
+        android:gravity="center"/>
+</LinearLayout>

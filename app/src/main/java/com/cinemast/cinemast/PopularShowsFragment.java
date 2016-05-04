@@ -27,7 +27,7 @@ public class PopularShowsFragment extends Fragment implements FetchFromServerUse
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.popular_shows, container, false);
-        new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/tv/popular?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        new FetchFromServerTask(this, 0).execute("https://api.themoviedb.org/3/tv/popular?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         return view;
     }
 

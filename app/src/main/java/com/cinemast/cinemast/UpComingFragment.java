@@ -24,7 +24,7 @@ public class UpComingFragment extends Fragment implements FetchFromServerUser {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.up_coming, container, false);
-        new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/movie/upcoming?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        new FetchFromServerTask(this, 0).execute("https://api.themoviedb.org/3/movie/upcoming?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         return view;
     }
 

@@ -29,7 +29,7 @@ public class HomePage extends FragmentActivity {
         movies = new MoviesFragment();
         tvShows = new TvShowsFragment();
         discover = new MoviesFragment();
-        people = new MoviesFragment();
+        people = new PeopleFragment();
 
         initFragments();
     }
