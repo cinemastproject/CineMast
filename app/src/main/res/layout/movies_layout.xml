@@ -5,20 +5,8 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/background"
-            android:layout_alignBottom="@+id/popularMovies"
-            android:layout_alignParentTop="true" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/popularMovies"
-            android:layout_alignParentTop="true"
-            android:background="#99546e7a"/>
+        android:layout_height="wrap_content"
+        android:background="#546e7a">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

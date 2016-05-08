@@ -1,5 +1,6 @@
 package com.cinemast.cinemast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
 import Utilities.PopularMovieBean;
 import Utilities.PopularMovieParser;
+import Utilities.RecyclerItemClickListener;
 
 public class PopularMoviesFragment extends Fragment implements FetchFromServerUser {
 
@@ -40,6 +42,13 @@ public class PopularMoviesFragment extends Fragment implements FetchFromServerUs
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.popularMovies);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
+                startActivity(detailActivity);
+            }
+        }));
         recyclerView.setHasFixedSize(true);
         MoviesAdapter adapter = new MoviesAdapter(getParentFragment().getActivity(), popularMoviesList);
         recyclerView.setAdapter(adapter);

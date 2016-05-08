@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="175dp"
-        android:layout_height="220dp"
-        android:scaleType="fitXY"
-        android:id="@+id/person_image"/>
-    <TextView
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        style="@style/TextStyle"
-        android:textSize="12sp"
-        android:minHeight="40dp"
-        android:id="@+id/person_name"
-        android:background="#607d8b"
-        android:gravity="center"/>
-</LinearLayout>
+    android:elevation="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#FFF">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:gravity="center">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/person_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#bdbdbd"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            style="@style/TextStyle"
+            android:textSize="12sp"
+            android:minHeight="40dp"
+            android:id="@+id/person_name"
+            android:background="#607d8b"
+            android:gravity="center"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
