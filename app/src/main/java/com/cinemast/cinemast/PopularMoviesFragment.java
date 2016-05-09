@@ -38,7 +38,7 @@ public class PopularMoviesFragment extends Fragment implements FetchFromServerUs
     @Override
     public void onFetchCompletion(String string, int id) {
         PopularMovieParser parser = new PopularMovieParser(string);
-        List<PopularMovieBean> popularMoviesList = parser.getMoviesList();
+        final List<PopularMovieBean> popularMoviesList = parser.getMoviesList();
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.popularMovies);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -46,6 +46,7 @@ public class PopularMoviesFragment extends Fragment implements FetchFromServerUs
             @Override
             public void onItemClick(View view, int position) {
                 Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
+                detailActivity.putExtra("ID", popularMoviesList.get(position).getId());
                 startActivity(detailActivity);
             }
         }));
