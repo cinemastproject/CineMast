@@ -29,6 +29,6 @@ public class MovieDetails extends AppCompatActivity implements FetchFromServerUs
 
     @Override
     public void onFetchCompletion(String string, int id) {
-        MovieDetailsParser = 
+        MovieDetailsParser =
     }
 }
