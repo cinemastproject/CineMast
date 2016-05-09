@@ -101,6 +101,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
                         android:textColor="#ffc107"
+                        android:id="@+id/censor"
                         android:gravity="start"
                         android:text="Censor"/>
                     <TextView
@@ -133,6 +134,7 @@
                         android:textSize="12sp"
                         android:textColor="#CCC"
                         android:gravity="start"
+                        android:id="@+id/genre"
                         android:text="Action | Sci-Fi | Romantic"/>
                     </LinearLayout>
 
@@ -153,6 +155,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
+                        android:id="@+id/duration"
                         android:text="2hrs 45mins"/>
                 </LinearLayout>
                 <LinearLayout
@@ -172,6 +175,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
+                        android:id="@+id/release"
                         android:text="12-12-2012"/>
                 </LinearLayout>
                 <LinearLayout
@@ -191,12 +195,14 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
+                        android:id="@+id/tagline"
                         android:text="Divided we fall"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
+            android:id="@+id/video_frame"
             android:layout_height="200dp">
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
