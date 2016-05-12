@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="fitXY"
+            android:id="@+id/cover"
+            android:src="@drawable/profile"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="fitXY"
+            android:id="@+id/cover_gray"
+            android:background="#99555555"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_menu_white_24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/back"
+            android:scaleType="center"
+            android:src="@drawable/ic_share_white_24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_below="@+id/back"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="normal"
+            android:textColor="#EEE"
+            android:textSize="28sp"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Scarlett Johansson"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:text="ACTRESS"
+                android:background="@drawable/ellipse"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="#FFF"
+                android:textSize="12sp"
+                android:text="PRODUCER"
+                android:background="@drawable/ellipse"/>
+        </LinearLayout>
+
+        <Utilities.Triangle
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignBottom="@+id/cover"
+            android:id="@+id/view" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:textColor="#555"
+            android:text="Sep 15th 1982"
+            android:layout_below="@+id/view2"
+            android:layout_alignRight="@+id/view2"
+            android:layout_alignEnd="@+id/view2" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:rippleColor="#CCC"
+        android:src="@drawable/ic_add_white_24dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_alignBottom="@+id/cover"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/view2" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/person_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/temp1"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#bdbdbd"
+            android:layout_alignTop="@+id/view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/overview"
+            android:layout_below="@id/person_image"
+            android:padding="32dp"
+            android:textColor="#555"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"
+            android:text="Everyone in 1880's America knows Jesse James. He's the nation's most notorious criminal, hunted by the law in 10 states. He's also the land's greatest hero, lauded as a Robin Hood by the public. Robert Ford? No one knows him. Not yet. But the ambitious 19-year-old aims to change that. He'll befriend Jesse, ride with his gang. And if that doesn't bring Ford fame, he'll find a deadlier way."/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/person_movies"
+            android:padding="8dp"
+            android:layout_below="@+id/overview">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</ScrollView>
