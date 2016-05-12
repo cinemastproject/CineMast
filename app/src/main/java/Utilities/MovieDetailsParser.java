@@ -4,9 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by deepjyoti on 9/5/16.
- */
 public class MovieDetailsParser {
     String result;
 
@@ -14,7 +11,7 @@ public class MovieDetailsParser {
         this.result = result;
     }
 
-    public MovieDetailsBean getMovieDetailsList(){
+    public MovieDetailsBean getMovieDetails(){
         MovieDetailsBean movieDetailsBean = new MovieDetailsBean();
         try {
             JSONObject root = new JSONObject(result);

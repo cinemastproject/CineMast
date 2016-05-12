@@ -13,6 +13,8 @@
         android:textColor="#FFF"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center_vertical"
         android:minHeight="40dp"/>

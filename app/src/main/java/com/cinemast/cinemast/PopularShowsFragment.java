@@ -1,5 +1,6 @@
 package com.cinemast.cinemast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,7 @@ import java.util.List;
 
 import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
-import Utilities.PopularMovieBean;
-import Utilities.PopularMovieParser;
+import Utilities.RecyclerItemClickListener;
 import Utilities.TvShowsBean;
 import Utilities.TvShowsParser;
 
@@ -40,10 +40,18 @@ public class PopularShowsFragment extends Fragment implements FetchFromServerUse
     public void onFetchCompletion(String string, int id) {
         TvShowsParser parser = new TvShowsParser(string);
         try {
-            List<TvShowsBean> tvShowsList = parser.getShowsList();
+            final List<TvShowsBean> tvShowsList = parser.getShowsList();
             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.popular_show);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(layoutManager);
+            recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
+                    detailActivity.putExtra("ID", tvShowsList.get(position).getId());
+                    startActivity(detailActivity);
+                }
+            }));
             recyclerView.setHasFixedSize(true);
             TvShowAdapter adapter = new TvShowAdapter(getParentFragment().getActivity(), tvShowsList);
             recyclerView.setAdapter(adapter);
