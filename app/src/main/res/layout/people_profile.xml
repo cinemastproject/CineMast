@@ -6,6 +6,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:background="#FFF"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -46,30 +47,45 @@
             android:layout_below="@+id/back"
             android:fontFamily="sans-serif-condensed"
             android:textStyle="normal"
-            android:textColor="#EEE"
+            android:textColor="#FFFFFF"
             android:textSize="28sp"
             android:gravity="center_vertical"
-            android:padding="16dp"
-            android:text="Scarlett Johansson"/>
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/also_known_as"
+            android:layout_below="@+id/name"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="normal"
+            android:textColor="#EEE"
+            android:textSize="14sp"
+            android:gravity="left|center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:layout_below="@id/also_known_as"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/gender"
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="#FFF"
                 android:textStyle="bold"
                 android:textSize="12sp"
-                android:text="ACTRESS"
                 android:background="@drawable/ellipse"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"/>
@@ -81,7 +97,6 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="#FFF"
                 android:textSize="12sp"
-                android:text="PRODUCER"
                 android:background="@drawable/ellipse"/>
         </LinearLayout>
 
@@ -94,13 +109,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/birthday"
             android:fontFamily="sans-serif-condensed"
             android:textStyle="bold"
             android:textColor="#555"
-            android:text="Sep 15th 1982"
-            android:layout_below="@+id/view2"
-            android:layout_alignRight="@+id/view2"
-            android:layout_alignEnd="@+id/view2" />
+            android:layout_below="@+id/fab"
+            android:layout_alignRight="@+id/fab"
+            android:layout_alignEnd="@+id/fab" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/birth_country"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#555"
+            android:layout_below="@+id/birthday"
+            android:layout_alignRight="@+id/fab"
+            android:layout_alignEnd="@+id/fab"
+            android:layout_marginTop="4dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -116,14 +141,13 @@
         android:layout_marginRight="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:id="@+id/view2" />
+        android:id="@+id/fab" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/person_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/temp1"
             app:civ_border_width="2dp"
             app:civ_border_color="#bdbdbd"
             android:layout_alignTop="@+id/view"
@@ -135,20 +159,42 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/overview"
-            android:layout_below="@id/person_image"
-            android:padding="32dp"
-            android:textColor="#555"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="15sp"
-            android:text="Everyone in 1880's America knows Jesse James. He's the nation's most notorious criminal, hunted by the law in 10 states. He's also the land's greatest hero, lauded as a Robin Hood by the public. Robert Ford? No one knows him. Not yet. But the ambitious 19-year-old aims to change that. He'll befriend Jesse, ride with his gang. And if that doesn't bring Ford fame, he'll find a deadlier way."/>
+            />
 
-        <android.support.v7.widget.RecyclerView
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/biography"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/person_movies"
+            android:layout_below="@id/person_image"
+            expandableTextView:maxCollapsedLines="4"
+            expandableTextView:animDuration="200">
+            <TextView
+                android:id="@id/expandable_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="#777"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+            <ImageButton
+                android:id="@id/expand_collapse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:background="@android:color/transparent"/>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/person_gallery"
             android:padding="8dp"
-            android:layout_below="@+id/overview">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_below="@+id/biography">
+        </FrameLayout>
     </RelativeLayout>
 </ScrollView>
