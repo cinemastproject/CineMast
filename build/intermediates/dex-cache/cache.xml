@@ -1,2 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/deepjyoti/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0-alpha2/support-annotations-24.0.0-alpha2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8071e1e6cd07e9253720313d6c14286a7ee424e0">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0-alpha2_2c0ba079c95c24a0a8cf7f94e6ff46ded76e5b22/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0-alpha2/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="32ab8bede8cd600f25a5bb3fe15068c81c8910dc">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0-alpha2_e690d1dce76bd28535411e73ea0754c1c34e21de/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="cb86970df0f0f25f766d320b279c7858c1ca0003">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.2.1_e3d538d8bfdfc970a27d1fba95c6e6d0091073a8/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="bec19b80fa741da9e61f027e6463edbc399c4e1a">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_30e0f71843f2a6693a62996755cc90c0d7e7689c/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.2.1_1973f3f15fcdc2bfad056343ec72bac9690ff7e6/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.2.1_c84b91d699aa2fa85e1b620ad4f5eabf1a1a96bb/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0-alpha2/jars/libs/internal_impl-24.0.0-alpha2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e460bc069dfd21d22770cf2a2370c9021b9c98a2">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0-alpha2_fd36e101c14169bef234933cd8666216debb9db7/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_09d17ba64f6a16a49546fda4aa6134f1abbf91f0/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="22828314eca4a0ebeb28cec88c83fd819bf4718c">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f95e0d6e99f8e1b1d6ce84248b6f0ff99f41c7ab/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_6ddd8d02badf07e088e04e8a148a973de24b04dc/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.2.1_dc41f971c5248ca262d5bde893f08a6542ebe01d/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.2.1_91020ca331e0fff0c61ebd56e1940a5a4b323467/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/de.hdodenhof-circleimageview-2.0.0_b92700556690eed24224145ea38f6d19d8004015/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.1_56ce37d9b65c16a1e9943047a6c9b374798ab3d0/classes.dex" />
+    </item>
+    <item
+        jar="/home/deepjyoti/cinemast/app/build/intermediates/exploded-aar/com.daimajia.slider/library/1.1.5/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="08962e03b6a954c65d4944e092879b7f5ee1208d">
+        <dex dex="/home/deepjyoti/cinemast/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.daimajia.slider-library-1.1.5_4a512d94afbbc0a3f3839390c264f090bbae6714/classes.dex" />
+    </item>
+
+</items>
