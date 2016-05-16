@@ -1,55 +1,90 @@
 package com.cinemast.cinemast;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
-import Utilities.PopularMovieBean;
+import Utilities.FetchFromServerTask;
+import Utilities.FetchFromServerUser;
+import Utilities.ProfileDetailBean;
+import Utilities.ProfileDetailParser;
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Profile extends Activity{
-    String []posters = new String[]{
-            "/8EueDe6rPF0jQU4LSpsH2Rmrqac.jpg",
-            "/yDYpYy09nfyXIWHC6mbsaRdLiDV.jpg",
-            "/v8qgUe7VUI1tjhvkMBSxbAQUsTC.jpg",
-            "/iFw7g1L12c2vh5BVF0soIoYQn1l.jpg",
-            "/f3c1rwcOoeU0v6Ak5loUvMyifR0.jpg",
-            "/5zljIJOYpOEtWJVVdrnyDR0uiI.jpg",
-            "/5AIP3FA0tXGXbWtm4T6pEkNVhhf.jpg",
-            "/HRVCIV7uBz9aCxddikcuXgiZZd.jpg",
-            "/eYFHUWxTCNg6lPypJCaUQXhoUop.jpg",
-            "/f3c1rwcOoeU0v6Ak5loUvMyifR0.jpg"
-    };
+public class Profile extends FragmentActivity implements FetchFromServerUser{
+
+    TextView name, alsoKnownAs, gender, birthday, birthplace;
+    ExpandableTextView biography;
+    CircleImageView profileImage;
+    int profileId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.people_profile);
 
-        TextView overview = (TextView) findViewById(R.id.overview);
-        overview.setSelected(true);
-        overview.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        profileId = Integer.parseInt(getIntent().getStringExtra("ID"));
 
-        List<PopularMovieBean> popularMoviesList = new ArrayList<>();
-        movies(popularMoviesList);
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.person_movies);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        MoviesAdapter adapter = new MoviesAdapter(this, popularMoviesList);
-        recyclerView.setAdapter(adapter);
+        name = (TextView) findViewById(R.id.name);
+        alsoKnownAs = (TextView) findViewById(R.id.also_known_as);
+        biography = (ExpandableTextView) findViewById(R.id.biography);
+        gender = (TextView) findViewById(R.id.gender);
+        birthday = (TextView) findViewById(R.id.birthday);
+        birthplace = (TextView) findViewById(R.id.birth_country);
+        profileImage = (CircleImageView) findViewById(R.id.person_image);
+
+        if(profileId != -1) {
+            Log.d("TAG", "http://api.themoviedb.org/3/person/"+ profileId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+            new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/person/"+ profileId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        }
+
+        Fragment personGallery = new PersonGalleryFragment();
+        Bundle data = new Bundle();
+        data.putInt("ID", profileId);
+        personGallery.setArguments(data);
+        getSupportFragmentManager().beginTransaction().replace(R.id.person_gallery, personGallery).commit();
     }
 
-    public void movies(List<PopularMovieBean> popularMoviesList){
-        for(int i = 0; i < posters.length; i++) {
-            PopularMovieBean bean = new PopularMovieBean();
-            bean.setTitle("Scarlett Johanson");
-            bean.setPoster_path(posters[i]);
-            popularMoviesList.add(bean);
+    @Override
+    public void onPreFetch() {
+
+    }
+
+    @Override
+    public void onFetchCompletion(String string, int id) {
+        ProfileDetailParser parser = new ProfileDetailParser(string);
+        try {
+            ProfileDetailBean profile = parser.getProfileDetail();
+            name.setText(profile.getName());
+            ArrayList<String> list = profile.getAlso_known_as();
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < list.size(); i++) {
+                builder.append(list.get(i));
+                if(i <= list.size() - 2)
+                    builder.append(" | ");
+            }
+            alsoKnownAs.setText(builder.toString());
+            if(profile.getGender() == 1)
+                gender.setText("ACTRESS");
+            else
+                gender.setText("ACTOR");
+            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+            Date t = ft.parse(profile.getBirthday());
+            birthday.setText(String.format("%tB %<te, %<tY", t));
+            birthplace.setText(profile.getPlace_of_birth());
+            biography.setText(profile.getBiography());
+            Picasso.with(this).load("https://image.tmdb.org/t/p/w185/" + profile.getProfile_path()).error(R.drawable.notfound).placeholder(R.drawable.movie).into(profileImage);
+        }catch (Exception ex) {
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -19,10 +19,7 @@
         </activity>
         <activity android:name=".MovieDetails"
             android:label="Movie Detail"/>
-        <activity android:name=".TVShowDetails"
-            android:label="TV Show Detail"/>
         <activity android:name=".Profile"/>
-
     </application>
 
 </manifest>
