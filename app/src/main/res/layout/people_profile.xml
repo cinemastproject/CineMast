@@ -196,5 +196,13 @@
             android:padding="8dp"
             android:layout_below="@+id/biography">
         </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/casted_in"
+            android:padding="8dp"
+            android:layout_below="@+id/person_gallery">
+        </FrameLayout>
     </RelativeLayout>
 </ScrollView>

@@ -48,10 +48,13 @@ public class Profile extends FragmentActivity implements FetchFromServerUser{
         }
 
         Fragment personGallery = new PersonGalleryFragment();
+        Fragment castedIn = new CastedInFragment();
         Bundle data = new Bundle();
         data.putInt("ID", profileId);
         personGallery.setArguments(data);
+        castedIn.setArguments(data);
         getSupportFragmentManager().beginTransaction().replace(R.id.person_gallery, personGallery).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.casted_in, castedIn).commit();
     }
 
     @Override
