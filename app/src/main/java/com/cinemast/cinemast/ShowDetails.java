@@ -4,7 +4,7 @@ package com.cinemast.cinemast;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -96,7 +96,7 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
         Bundle data = new Bundle();
         data.putInt("ID", movieId);
         movieVideoFragment.setArguments(data);
-        getSupportFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
 
     }
 

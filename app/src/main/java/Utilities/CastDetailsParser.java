@@ -7,9 +7,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by deepjyoti on 9/5/16.
- */
 public class CastDetailsParser {
     String result;
     List<CastDetailsBean> castDetailsList = new ArrayList<>();
@@ -18,7 +15,7 @@ public class CastDetailsParser {
         this.result = result;
     }
 
-    public List<CastDetailsBean> getMovieDetailsList(){
+    public List<CastDetailsBean> getCastDetailsList(){
         try{
             JSONObject root = new JSONObject(result);
             String movie_id = root.getString("id");

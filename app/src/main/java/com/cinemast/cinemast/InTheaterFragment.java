@@ -45,7 +45,7 @@ public class InTheaterFragment extends Fragment implements FetchFromServerUser {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
+                Intent detailActivity = new Intent(getActivity(), MovieDetail.class);
                 detailActivity.putExtra("ID", popularMoviesList.get(position).getId());
                 startActivity(detailActivity);
             }

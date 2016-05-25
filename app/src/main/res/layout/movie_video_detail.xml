@@ -8,22 +8,22 @@
     app:cardElevation="20dp">
     <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="150dp"
+        android:layout_width="175dp"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="175dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
             android:src="@drawable/notfound"
             android:id="@+id/moviePoster"/>
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="175dp"
+            android:layout_height="120dp"
             android:scaleType="center"
             android:src="@drawable/ic_play_circle_outline_white_24dp"
             android:id="@+id/play"/>
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="175dp"
             android:layout_height="40dp"
             style="@style/TextStyle"
             android:textSize="12sp"

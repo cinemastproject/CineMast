@@ -9,20 +9,19 @@
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="320dp"
             android:scaleType="fitXY"
-            android:src="@drawable/temp"
             android:id="@+id/movie_images"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#607D8B"
-            android:paddingBottom="16dp"
+            android:background="#43a047"
+            android:paddingBottom="12dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
+                android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:id="@+id/movie_name"
                 android:textColor="#FFF"
@@ -30,8 +29,7 @@
                 android:gravity="start|bottom"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:textSize="20sp"
-                android:text="Captain America: Civil War"/>
+                android:textSize="16sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,7 +37,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/movie_year"
                     style="@style/TextStyle"
@@ -47,8 +45,7 @@
                     android:gravity="start|center_vertical"
                     android:paddingStart="32dp"
                     android:paddingEnd="32dp"
-                    android:textSize="16sp"
-                    android:text="(2016)"/>
+                    android:textSize="14sp" />
                 <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,8 +67,10 @@
             android:textColor="#FFF"
             android:fontFamily="sans-serif-condensed"
             android:gravity="start"
-            android:padding="32dp"
-            android:text="Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies."/>
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -79,13 +78,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="32dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:id="@+id/poster"
-                android:src="@drawable/temp"/>
+                android:id="@+id/poster" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,8 +116,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
-                        android:gravity="start"
-                        android:text="PG/UA/A"/>
+                        android:gravity="start" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,8 +138,7 @@
                         android:textColor="#CCC"
                         android:gravity="start"
                         android:id="@+id/genre"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="Action | Sci-Fi | Romantic"/>
+                        android:fontFamily="sans-serif-condensed" />
                     </LinearLayout>
 
                 <LinearLayout
@@ -159,8 +158,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
-                        android:id="@+id/duration"
-                        android:text="2hrs 45mins"/>
+                        android:id="@+id/duration" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,8 +177,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
-                        android:id="@+id/release"
-                        android:text="12-12-2012"/>
+                        android:id="@+id/release" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,8 +196,7 @@
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#CCC"
-                        android:id="@+id/tagline"
-                        android:text="Divided we fall"/>
+                        android:id="@+id/tagline" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -208,7 +204,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/video_frames">
-
         </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/casting">
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>

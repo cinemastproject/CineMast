@@ -46,7 +46,7 @@ public class CastedInFragment extends Fragment implements FetchFromServerUser {
         CombinedCastDetailsParser parser = new CombinedCastDetailsParser(string);
         try {
             final List<CombinedCastDetail> castList = parser.getCastDetail();
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.casted_in);
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.casts);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {

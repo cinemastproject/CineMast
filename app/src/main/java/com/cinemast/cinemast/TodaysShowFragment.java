@@ -49,7 +49,7 @@ public class TodaysShowFragment extends Fragment implements FetchFromServerUser 
             recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
+                    Intent detailActivity = new Intent(getActivity(), TVShowDetails.class);
                     detailActivity.putExtra("ID", tvShowsList.get(position).getId());
                     startActivity(detailActivity);
                 }

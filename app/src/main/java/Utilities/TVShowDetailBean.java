@@ -2,40 +2,40 @@ package Utilities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TVShowDetailBean implements Serializable {
     private String backdrop_path;
-    private ArrayList<CreatedByDetail> createdBy;
+    private List<CreatedByDetail> createdBy;
     private int[] episode_run_time;
     private String first_air_date;
-    private ArrayList<GenreDetail> genreDetails;
+    private List<GenreDetail> genreDetails;
     private String homepage;
-    private int id;
+    private String id;
     private boolean in_production;
-    private ArrayList<String> languages;
+    private String[] languages;
     private String last_air_date;
     private String name;
-    private ArrayList<NetworkDetail> networkDetails;
+    private List<NetworkDetail> networkDetails;
     private int number_of_episodes;
     private int number_of_seasons;
-    private ArrayList<String> origin_country;
+    private String[] origin_country;
     private String original_language;
+    private String original_name;
     private String overview;
     private float popularity;
     private String poster_path;
-    private ArrayList<ProductionCompanyDetail> companyDetails;
+    private List<ProductionCompanyDetail> companyDetails;
     private ArrayList<Season> seasons;
     private String status;
     private String type;
     private float vote_average;
-    private float vote_count;
+    private int vote_count;
 
     public TVShowDetailBean(){
         createdBy = new ArrayList<>();
         genreDetails = new ArrayList<>();
-        languages = new ArrayList<>();
         networkDetails = new ArrayList<>();
-        origin_country = new ArrayList<>();
         companyDetails = new ArrayList<>();
         seasons = new ArrayList<>();
     }
@@ -48,11 +48,11 @@ public class TVShowDetailBean implements Serializable {
         this.backdrop_path = backdrop_path;
     }
 
-    public ArrayList<CreatedByDetail> getCreatedBy() {
+    public List<CreatedByDetail> getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(ArrayList<CreatedByDetail> createdBy) {
+    public void setCreatedBy(List<CreatedByDetail> createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -72,11 +72,11 @@ public class TVShowDetailBean implements Serializable {
         this.first_air_date = first_air_date;
     }
 
-    public ArrayList<GenreDetail> getGenreDetails() {
+    public List<GenreDetail> getGenreDetails() {
         return genreDetails;
     }
 
-    public void setGenreDetails(ArrayList<GenreDetail> genreDetails) {
+    public void setGenreDetails(List<GenreDetail> genreDetails) {
         this.genreDetails = genreDetails;
     }
 
@@ -88,11 +88,11 @@ public class TVShowDetailBean implements Serializable {
         this.homepage = homepage;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -102,14 +102,6 @@ public class TVShowDetailBean implements Serializable {
 
     public void setIn_production(boolean in_production) {
         this.in_production = in_production;
-    }
-
-    public ArrayList<String> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(ArrayList<String> languages) {
-        this.languages = languages;
     }
 
     public String getLast_air_date() {
@@ -128,11 +120,11 @@ public class TVShowDetailBean implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<NetworkDetail> getNetworkDetails() {
+    public List<NetworkDetail> getNetworkDetails() {
         return networkDetails;
     }
 
-    public void setNetworkDetails(ArrayList<NetworkDetail> networkDetails) {
+    public void setNetworkDetails(List<NetworkDetail> networkDetails) {
         this.networkDetails = networkDetails;
     }
 
@@ -150,14 +142,6 @@ public class TVShowDetailBean implements Serializable {
 
     public void setNumber_of_seasons(int number_of_seasons) {
         this.number_of_seasons = number_of_seasons;
-    }
-
-    public ArrayList<String> getOrigin_country() {
-        return origin_country;
-    }
-
-    public void setOrigin_country(ArrayList<String> origin_country) {
-        this.origin_country = origin_country;
     }
 
     public String getOriginal_language() {
@@ -192,11 +176,11 @@ public class TVShowDetailBean implements Serializable {
         this.poster_path = poster_path;
     }
 
-    public ArrayList<ProductionCompanyDetail> getCompanyDetails() {
+    public List<ProductionCompanyDetail> getCompanyDetails() {
         return companyDetails;
     }
 
-    public void setCompanyDetails(ArrayList<ProductionCompanyDetail> companyDetails) {
+    public void setCompanyDetails(List<ProductionCompanyDetail> companyDetails) {
         this.companyDetails = companyDetails;
     }
 
@@ -232,18 +216,42 @@ public class TVShowDetailBean implements Serializable {
         this.vote_average = vote_average;
     }
 
-    public float getVote_count() {
+    public int getVote_count() {
         return vote_count;
     }
 
-    public void setVote_count(float vote_count) {
+    public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public String[] getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String[] languages) {
+        this.languages = languages;
+    }
+
+    public String[] getOrigin_country() {
+        return origin_country;
+    }
+
+    public void setOrigin_country(String[] origin_country) {
+        this.origin_country = origin_country;
+    }
+
+    public String getOriginal_name() {
+        return original_name;
+    }
+
+    public void setOriginal_name(String original_name) {
+        this.original_name = original_name;
     }
 
     class Season implements Serializable {
         private String air_date;
         private int episode_count;
-        private int id;
+        private String id;
         private String poster_path;
         private int season_number;
 
@@ -263,11 +271,11 @@ public class TVShowDetailBean implements Serializable {
             this.episode_count = episode_count;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

@@ -2,9 +2,6 @@ package Utilities;
 
 import java.io.Serializable;
 
-/**
- * Created by deepjyoti on 9/5/16.
- */
 public class CastDetailsBean implements Serializable {
     private String cast_id;
     private String character;

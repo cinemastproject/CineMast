@@ -23,7 +23,7 @@
             android:textSize="12sp"
             android:minHeight="40dp"
             android:id="@+id/title"
-            android:background="#607d8b"
+            android:background="#43a047"
             android:gravity="center" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

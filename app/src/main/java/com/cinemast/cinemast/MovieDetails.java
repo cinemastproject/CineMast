@@ -1,26 +1,22 @@
 package com.cinemast.cinemast;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
 import Utilities.MovieDetailsBean;
 import Utilities.MovieDetailsParser;
 
-public class MovieDetails extends AppCompatActivity implements FetchFromServerUser {
+public class MovieDetails extends Activity implements FetchFromServerUser {
     View view;
     TextView genre;
     TextView movieName;
@@ -53,7 +49,7 @@ public class MovieDetails extends AppCompatActivity implements FetchFromServerUs
         movieId = intent.getIntExtra("ID", -1);
 
         if(movieId != -1) {
-            Log.d("kijiuju","http://api.themoviedb.org/3/movie/" + movieId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+
             new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/movie/" + movieId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         }
 
@@ -98,10 +94,6 @@ public class MovieDetails extends AppCompatActivity implements FetchFromServerUs
         Bundle data = new Bundle();
         data.putInt("ID", movieId);
         movieVideoFragment.setArguments(data);
-        getSupportFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
-
+        getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
         }
-
-
-
 }
