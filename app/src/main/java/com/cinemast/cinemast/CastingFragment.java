@@ -1,6 +1,7 @@
 package com.cinemast.cinemast;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -9,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class CastingFragment extends Fragment implements FetchFromServerUser {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.cast_fragment, container, false);
+        TextView header = (TextView) view.findViewById(R.id.header);
+        header.setText("Castings");
+        header.setTextColor(Color.parseColor("#FFFFFF"));
         int movieId = getArguments().getInt("ID");
         new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/movie/" + movieId + "/credits?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         return view;
@@ -57,7 +61,6 @@ public class CastingFragment extends Fragment implements FetchFromServerUser {
             recyclerView.setAdapter(adapter);
         }catch (Exception ex){
             ex.printStackTrace();
-            Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

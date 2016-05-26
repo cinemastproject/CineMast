@@ -16,6 +16,7 @@ import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
 import Utilities.PersonImagesBean;
 import Utilities.PersonImagesParser;
+import Utilities.RecyclerItemClickListener;
 
 /**
  * Created by suny on 13/5/16.
@@ -54,6 +55,12 @@ public class PersonGalleryFragment extends Fragment implements FetchFromServerUs
             personImagesList = parser.getImagesList();
             adapter = new PersonGalleryAdapter(getActivity(), personImagesList);
             recyclerView.setAdapter(adapter);
+            recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+
+                }
+            }));
             adapter.notifyDataSetChanged();
         }catch (Exception ex) {
             ex.printStackTrace();

@@ -45,7 +45,7 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
         duration = (TextView) findViewById(R.id.duration);
         releaseDate = (TextView) findViewById(R.id.release);
         tagline = (TextView) findViewById(R.id.tagline);
-        movieImage = (ImageView) findViewById(R.id.movie_images);
+        //movieImage = (ImageView) findViewById(R.id.movie_images);
 
         Intent intent = getIntent();
         movieId = intent.getIntExtra("ID", -1);
@@ -83,10 +83,10 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
                 .placeholder(R.drawable.movie)
 
                 .into(poster);
-        Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
-                .error(R.drawable.notfound)
-                .placeholder(R.drawable.movie)
-                .into(movieImage);
+        //Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
+                //.error(R.drawable.notfound)
+                //.placeholder(R.drawable.movie)
+                //.into(movieImage);
         censor.setText(detailsBean.isAdult() ? "A" : "UA");
         duration.setText(detailsBean.getRuntime() / 60 + " hrs " + detailsBean.getRuntime() % 60 + " mins");
         releaseDate.setText(detailsBean.getRelease_date());

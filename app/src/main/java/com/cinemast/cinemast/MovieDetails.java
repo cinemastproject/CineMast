@@ -43,7 +43,7 @@ public class MovieDetails extends Activity implements FetchFromServerUser {
         duration = (TextView) findViewById(R.id.duration);
         releaseDate = (TextView) findViewById(R.id.release);
         tagline = (TextView) findViewById(R.id.tagline);
-        movieImage = (ImageView) findViewById(R.id.movie_images);
+        //movieImage = (ImageView) findViewById(R.id.movie_images);
 
         Intent intent = getIntent();
         movieId = intent.getIntExtra("ID", -1);
