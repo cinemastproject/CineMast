@@ -70,9 +70,9 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
             new FetchFromServerTask(this, 1).execute("http://api.themoviedb.org/3/movie/" + movieId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         }
 
-        android.support.v4.app.Fragment similarMovies = new GenericFragment();
+        GenericFragment similarMovies = new GenericFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("HEADER", "Similar Movies");
+        bundle.putString("TYPE", "Similar Movies");
         bundle.putString("URL", "https://api.themoviedb.org/3/movie/" + movieId + "/similar?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         similarMovies.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.similar, similarMovies).commit();

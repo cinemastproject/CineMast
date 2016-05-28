@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".HomePage">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -61,7 +60,6 @@
         android:id="@+id/container"
         android:layout_gravity="center">
     </android.support.v4.view.ViewPager>
-
     <LinearLayout
         android:id="@+id/grad"
         android:layout_width="match_parent"
@@ -71,5 +69,4 @@
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal|top">
     </LinearLayout>
-
 </RelativeLayout>
