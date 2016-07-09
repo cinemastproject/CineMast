@@ -12,12 +12,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import Utilities.MovieDetailsBean;
 import Utilities.PopularMovieBean;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder>{
 
     Context context;
-    List<PopularMovieBean> list;
+    List<MovieDetailsBean> list;
     LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -32,7 +33,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         }
     }
 
-    public MoviesAdapter(Context context, List<PopularMovieBean> list){
+    public MoviesAdapter(Context context, List<MovieDetailsBean> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

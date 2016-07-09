@@ -29,7 +29,7 @@ public class MovieVideoFragment extends Fragment implements FetchFromServerUser 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.movie_video, container, false);
         Bundle data = getArguments();
-        int id = data.getInt("ID");
+        String id = data.getString("ID");
         new FetchFromServerTask(this, 0).execute("https://api.themoviedb.org/3/movie/"+ id +"/videos?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         return view;
     }

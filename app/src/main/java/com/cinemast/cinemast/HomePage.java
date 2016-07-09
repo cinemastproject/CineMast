@@ -19,7 +19,7 @@ public class HomePage extends FragmentActivity {
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     SlidingTabLayout tabs;
-    Fragment movies, tvShows, discover, people;
+    Fragment movies, tvShows, people;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class HomePage extends FragmentActivity {
 
         movies = new MoviesFragment();
         tvShows = new TvShowsFragment();
-        discover = new MoviesFragment();
         people = new PeopleFragment();
 
         initFragments();
@@ -40,7 +39,6 @@ public class HomePage extends FragmentActivity {
 
         mSectionsPagerAdapter.addFragment(movies);
         mSectionsPagerAdapter.addFragment(tvShows);
-        mSectionsPagerAdapter.addFragment(discover);
         mSectionsPagerAdapter.addFragment(people);
 
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -68,7 +66,7 @@ public class HomePage extends FragmentActivity {
 
         List<android.support.v4.app.Fragment> fragments;
 
-        private String []title = {"MOVIES", "SHOWS", "DISCOVER", "PEOPLE"};
+        private String []title = {"MOVIES", "TV SHOWS", "PEOPLE"};
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);

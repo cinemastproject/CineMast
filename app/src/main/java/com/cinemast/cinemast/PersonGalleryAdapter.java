@@ -18,7 +18,7 @@ import Utilities.PopularMovieBean;
 public class PersonGalleryAdapter extends RecyclerView.Adapter<PersonGalleryAdapter.ViewHolder>{
 
     Context context;
-    List<PersonImagesBean> list;
+    List<PersonImagesBean.Profile> list;
     LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -30,7 +30,7 @@ public class PersonGalleryAdapter extends RecyclerView.Adapter<PersonGalleryAdap
         }
     }
 
-    public PersonGalleryAdapter(Context context, List<PersonImagesBean> list){
+    public PersonGalleryAdapter(Context context, List<PersonImagesBean.Profile> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

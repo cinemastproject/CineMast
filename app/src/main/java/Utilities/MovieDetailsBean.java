@@ -2,9 +2,6 @@ package Utilities;
 
 import java.io.Serializable;
 
-/**
- * Created by deepjyoti on 9/5/16.
- */
 public class MovieDetailsBean implements Serializable{
     private boolean adult;
     private String backdrop_path;
@@ -23,7 +20,7 @@ public class MovieDetailsBean implements Serializable{
     private String tagline;
     private String title;
     private boolean video;
-    private int vote_average;
+    private float vote_average;
     private int vote_count;
 
     public boolean isAdult() {
@@ -162,11 +159,11 @@ public class MovieDetailsBean implements Serializable{
         this.video = video;
     }
 
-    public int getVote_average() {
+    public float getVote_average() {
         return vote_average;
     }
 
-    public void setVote_average(int vote_average) {
+    public void setVote_average(float vote_average) {
         this.vote_average = vote_average;
     }
 

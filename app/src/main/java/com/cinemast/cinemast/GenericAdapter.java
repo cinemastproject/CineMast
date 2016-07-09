@@ -12,15 +12,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import Utilities.CastDetailsBean;
 import Utilities.CombinedCastDetail;
-import Utilities.TvShowsBean;
-
 
 public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHolder>{
 
     Context context;
-    List<CombinedCastDetail> list;
+    List<CombinedCastDetail.CastDetail> list;
     LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,7 +32,7 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
         }
     }
 
-    public GenericAdapter(Context context, List<CombinedCastDetail> list){
+    public GenericAdapter(Context context, List<CombinedCastDetail.CastDetail> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

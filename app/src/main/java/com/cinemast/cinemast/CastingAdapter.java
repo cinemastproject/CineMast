@@ -13,12 +13,13 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import Utilities.CastDetailsBean;
+import Utilities.CombinedCastDetail;
 import Utilities.PopularMovieBean;
 
 public class CastingAdapter extends RecyclerView.Adapter<CastingAdapter.ViewHolder>{
 
     Context context;
-    List<CastDetailsBean> list;
+    List<CombinedCastDetail.CastDetail> list;
     LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,7 +34,7 @@ public class CastingAdapter extends RecyclerView.Adapter<CastingAdapter.ViewHold
         }
     }
 
-    public CastingAdapter(Context context, List<CastDetailsBean> list){
+    public CastingAdapter(Context context, List<CombinedCastDetail.CastDetail> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

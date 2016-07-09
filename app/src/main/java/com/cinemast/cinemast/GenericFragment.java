@@ -17,89 +17,117 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Utilities.FetchFromServerTask;
-import Utilities.FetchFromServerUser;
-import Utilities.PopularMovieBean;
-import Utilities.PopularMovieParser;
+import Utilities.MovieDetailsBean;
+import Utilities.MoviesContract;
 import Utilities.RecyclerItemClickListener;
+import Utilities.TVContract;
 import Utilities.TvShowsBean;
-import Utilities.TvShowsParser;
+import network.API;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GenericFragment extends Fragment implements FetchFromServerUser {
+public class GenericFragment extends Fragment {
 
     View view;
     RecyclerView recyclerView;
     String heading;
-    List<PopularMovieBean> moviesList = new ArrayList<>();
+    List<MovieDetailsBean> moviesList = new ArrayList<>();
     List<TvShowsBean> tvShowsList = new ArrayList<>();
     MoviesAdapter adapter;
 
     String type;
+    String mClass;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://api.themoviedb.org/3/")
+            .build();
+    API api = retrofit.create(API.class);
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container,savedInstanceState);
         view = inflater.inflate(R.layout.generic_layout_fragment, container, false);
-        String url = getArguments().getString("URL");
         type = getArguments().getString("TYPE");
-        new FetchFromServerTask(this, 0).execute(url);
-        return view;
-    }
+        mClass = getArguments().getString("CLASS");
 
-    @Override
-    public void onPreFetch() {
-
-    }
-
-    @Override
-    public void onFetchCompletion(String string, int id) {
         TextView header = (TextView) view.findViewById(R.id.header);
         heading = getArguments().getString("HEADING");
         header.setText(heading);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.popularMovies);
-        if(getActivity() != null) {
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
-            if (type != null && type.equals("MOVIES")) {
-                try {
-                    PopularMovieParser parser = new PopularMovieParser(string);
-                    recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
-                            Intent detailActivity = new Intent(getActivity(), MovieDetail.class);
-                            detailActivity.putExtra("ID", moviesList.get(position).getId());
-                            startActivity(detailActivity);
+        if(type.equals("MOVIES")) {
+            api.getMovies("movie", mClass, 1).enqueue(new Callback<MoviesContract>() {
+                @Override
+                public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
+                    moviesList = response.body().getResults();
+
+                    if (getActivity() != null) {
+
+                        if (type != null && type.equals("MOVIES")) {
+                            try {
+                                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        Intent detailActivity = new Intent(getActivity(), MovieDetail.class);
+                                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                                        startActivity(detailActivity);
+                                    }
+                                }));
+                                adapter = new MoviesAdapter(getActivity(), moviesList);
+                                recyclerView.setAdapter(adapter);
+                            } catch (Exception ex) {
+                                showSnack(view, ex.getMessage(), R.color.red);
+                            }
                         }
-                    }));
-                    moviesList = parser.getMoviesList();
-                    adapter = new MoviesAdapter(getActivity(), moviesList);
-                    recyclerView.setAdapter(adapter);
-                } catch (Exception ex) {
-                    showSnack(view, ex.getMessage(), R.color.red);
+                    }
                 }
-            } else if (type != null && type.equals("SERIAL")) {
-                TvShowsParser parser = new TvShowsParser(string);
-                try {
-                    tvShowsList = parser.getShowsList();
-                    recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
-                            Intent detailActivity = new Intent(getActivity(), MovieDetails.class);
-                            detailActivity.putExtra("ID", tvShowsList.get(position).getId());
-                            startActivity(detailActivity);
+
+                @Override
+                public void onFailure(Call<MoviesContract> call, Throwable t) {
+                    t = null;
+                }
+            });
+        }else if(type.equals("SERIAL")) {
+            api.getTVShows("tv", mClass, 1).enqueue(new Callback<TVContract>() {
+                @Override
+                public void onResponse(Call<TVContract> call, Response<TVContract> response) {
+                    if(getActivity() != null) {
+                        try {
+                            tvShowsList = response.body().getResults();
+                            recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    Intent detailActivity = new Intent(getActivity(), TVShowDetails.class);
+                                    detailActivity.putExtra("ID", tvShowsList.get(position).getId());
+                                    startActivity(detailActivity);
+                                }
+                            }));
+                            TvShowAdapter adapter = new TvShowAdapter(getParentFragment().getActivity(), tvShowsList);
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (Exception ex) {
+                            //showSnack(view, ex.getMessage(), R.color.red);
+                            ex.printStackTrace();
                         }
-                    }));
-                    TvShowAdapter adapter = new TvShowAdapter(getParentFragment().getActivity(), tvShowsList);
-                    recyclerView.setAdapter(adapter);
-                } catch (Exception ex) {
-                    showSnack(view, ex.getMessage(), R.color.red);
+                    }
                 }
-            }
+
+                @Override
+                public void onFailure(Call<TVContract> call, Throwable t) {
+                    t = null;
+                }
+            });
         }
+        return view;
     }
 
     public void showSnack(View view, String msg, int color) {

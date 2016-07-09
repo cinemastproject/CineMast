@@ -38,7 +38,7 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
     TextView duration;
     TextView releaseDate;
     TextView tagline;
-    int movieId;
+    String movieId;
     ViewPager mViewPager;
     PageIndicator mIndicator;
 
@@ -62,9 +62,9 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
         mViewPager.setOnPageChangeListener(new PageChangeListener());
 
         Intent intent = getIntent();
-        movieId = intent.getIntExtra("ID", -1);
+        movieId = intent.getStringExtra("ID");
 
-        if(movieId != -1) {
+        if(movieId != null) {
             Log.d("MovieDetail", "http://api.themoviedb.org/3/movie/" + movieId + "/images?api_key=0d9b1f55e11c548f66e11f78a7f38357");
             new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/movie/" + movieId + "/images?api_key=0d9b1f55e11c548f66e11f78a7f38357");
             new FetchFromServerTask(this, 1).execute("http://api.themoviedb.org/3/movie/" + movieId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
@@ -118,7 +118,7 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
 
             Fragment movieVideoFragment = new MovieVideoFragment();
             Bundle data = new Bundle();
-            data.putInt("ID", movieId);
+            data.putString("ID", movieId);
             movieVideoFragment.setArguments(data);
             getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
 

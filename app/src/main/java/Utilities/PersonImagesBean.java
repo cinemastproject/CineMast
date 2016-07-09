@@ -1,63 +1,86 @@
 package Utilities;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by suny on 13/5/16.
  */
 public class PersonImagesBean implements Serializable {
-    private float aspect_ratio;
-    private String file_path;
-    private int height;
-    private float vote_average;
-    private int vote_count;
-    private int width;
 
-    public float getAspect_ratio() {
-        return aspect_ratio;
+    private String id;
+    private List<Profile> profiles;
+
+    public String getId() {
+        return id;
     }
 
-    public void setAspect_ratio(float aspect_ratio) {
-        this.aspect_ratio = aspect_ratio;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getFile_path() {
-        return file_path;
+    public List<Profile> getProfiles() {
+        return profiles;
     }
 
-    public void setFile_path(String file_path) {
-        this.file_path = file_path;
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
     }
 
-    public int getHeight() {
-        return height;
-    }
+    public class Profile {
+        private float aspect_ratio;
+        private String file_path;
+        private int height;
+        private float vote_average;
+        private int vote_count;
+        private int width;
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
+        public float getAspect_ratio() {
+            return aspect_ratio;
+        }
 
-    public float getVote_average() {
-        return vote_average;
-    }
+        public void setAspect_ratio(float aspect_ratio) {
+            this.aspect_ratio = aspect_ratio;
+        }
 
-    public void setVote_average(float vote_average) {
-        this.vote_average = vote_average;
-    }
+        public String getFile_path() {
+            return file_path;
+        }
 
-    public int getVote_count() {
-        return vote_count;
-    }
+        public void setFile_path(String file_path) {
+            this.file_path = file_path;
+        }
 
-    public void setVote_count(int vote_count) {
-        this.vote_count = vote_count;
-    }
+        public int getHeight() {
+            return height;
+        }
 
-    public int getWidth() {
-        return width;
-    }
+        public void setHeight(int height) {
+            this.height = height;
+        }
 
-    public void setWidth(int width) {
-        this.width = width;
+        public float getVote_average() {
+            return vote_average;
+        }
+
+        public void setVote_average(float vote_average) {
+            this.vote_average = vote_average;
+        }
+
+        public int getVote_count() {
+            return vote_count;
+        }
+
+        public void setVote_count(int vote_count) {
+            this.vote_count = vote_count;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
     }
 }

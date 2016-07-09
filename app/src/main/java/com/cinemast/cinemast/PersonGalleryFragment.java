@@ -12,20 +12,26 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import Utilities.FetchFromServerTask;
-import Utilities.FetchFromServerUser;
 import Utilities.PersonImagesBean;
-import Utilities.PersonImagesParser;
 import Utilities.RecyclerItemClickListener;
+import network.API;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by suny on 13/5/16.
- */
-public class PersonGalleryFragment extends Fragment implements FetchFromServerUser{
+public class PersonGalleryFragment extends Fragment {
 
-    List<PersonImagesBean> personImagesList = new ArrayList<>();
+    List<PersonImagesBean.Profile> personImagesList = new ArrayList<>();
     RecyclerView recyclerView;
     PersonGalleryAdapter adapter;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://api.themoviedb.org/3/person/")
+            .build();
+    API api = retrofit.create(API.class);
 
     @Nullable
     @Override
@@ -39,31 +45,27 @@ public class PersonGalleryFragment extends Fragment implements FetchFromServerUs
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/person/" + personId + "/images?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        api.getPersonImages(String.valueOf(personId)).enqueue(new Callback<PersonImagesBean>() {
+            @Override
+            public void onResponse(Call<PersonImagesBean> call, Response<PersonImagesBean> response) {
+                personImagesList = response.body().getProfiles();
+                adapter = new PersonGalleryAdapter(getActivity(), personImagesList);
+                recyclerView.setAdapter(adapter);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+                }));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<PersonImagesBean> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
         return view;
-    }
-
-    @Override
-    public void onPreFetch() {
-
-    }
-
-    @Override
-    public void onFetchCompletion(String string, int id) {
-        PersonImagesParser parser = new PersonImagesParser(string);
-        try {
-            personImagesList = parser.getImagesList();
-            adapter = new PersonGalleryAdapter(getActivity(), personImagesList);
-            recyclerView.setAdapter(adapter);
-            recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-
-                }
-            }));
-            adapter.notifyDataSetChanged();
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 }
