@@ -13,7 +13,8 @@
         android:id="@+id/people_grid"
         android:gravity="center"
         android:verticalSpacing="1dp"
-        android:horizontalSpacing="1dp">
+        android:horizontalSpacing="1dp"
+        android:background="#E0E1E2">
     </GridView>
 
 </LinearLayout>

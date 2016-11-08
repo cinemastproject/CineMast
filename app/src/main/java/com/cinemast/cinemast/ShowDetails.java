@@ -22,7 +22,7 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
     View view;
     TextView genre;
     TextView movieName;
-    TextView year;
+    //TextView year;
     TextView overview;
     ImageView poster;
     TextView censor;
@@ -38,7 +38,7 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
         setContentView(R.layout.movie_detail);
         genre = (TextView) findViewById(R.id.genre);
         movieName = (TextView) findViewById(R.id.movie_name);
-        year = (TextView) findViewById(R.id.movie_year);
+        //year = (TextView) findViewById(R.id.movie_year);
         overview = (TextView) findViewById(R.id.overview);
         poster = (ImageView) findViewById(R.id.poster);
         censor = (TextView) findViewById(R.id.censor);
@@ -76,7 +76,7 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
                 genreStr.append(" | ");
         }
         genre.setText(genreStr.toString());
-        year.setText("(" + String.valueOf(detailsBean.getRelease_date().split("-")[0]) + ")");
+        //year.setText("(" + String.valueOf(detailsBean.getRelease_date().split("-")[0]) + ")");
         overview.setText(detailsBean.getOverview());
         Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
                 .error(R.drawable.notfound)

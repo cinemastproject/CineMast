@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,74 +20,115 @@
             <RelativeLayout
                 android:id="@+id/img_slideshow_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="320dp">
-
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/view_pager"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:scaleType="center"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/ic_menu_white_24dp"/>
-
-                <Utilities.CirclePageIndicator
-                    android:id="@+id/indicator"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/view_pager"
-                    android:padding="32dp" />
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#43a047"
-                android:paddingBottom="12dp"
-                android:orientation="vertical">
-                <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/cover"
+                    android:src="@drawable/findingdory"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/cover_gray"
+                    android:background="#aa383939"/>
+
+                <Utilities.TriangleColored
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_alignBottom="@+id/cover"
+                    android:id="@+id/view" />
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:elevation="10dp"
+                    app:fabSize="normal"
+                    app:rippleColor="#CCC"
+                    android:src="@drawable/ic_add_white_24dp"
+                    app:backgroundTint="@color/green"
+                    android:layout_alignBottom="@+id/cover"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:id="@+id/fab" />
+
+                <ImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/person_image"
+                    android:src="@drawable/finding_dory"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_alignTop="@+id/view"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:elevation="10dp"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginStart="33dp" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/play_button"
+                    android:scaleType="fitCenter"
+                    android:layout_marginBottom="32dp"
+                    android:layout_above="@+id/fab"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:id="@+id/movie_name"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:gravity="start|bottom"
-                    android:paddingStart="32dp"
-                    android:paddingEnd="32dp"
-                    android:textSize="16sp" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:id="@+id/movie_year"
-                        style="@style/TextStyle"
-                        android:textColor="#CCC"
-                        android:gravity="start|center_vertical"
-                        android:paddingStart="32dp"
-                        android:paddingEnd="32dp"
-                        android:textSize="14sp" />
-                    <RatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/rating"
-                        android:numStars="5"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginStart="30dp"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:isIndicator="true"
-                        android:focusable="false"
-                        android:clickable="false"/>
-                </LinearLayout>
-            </LinearLayout>
+                    android:textSize="14sp"
+                    android:text="FINDING DORY"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textAlignment="viewStart"
+                    android:layout_below="@+id/cover"
+                    android:layout_toRightOf="@+id/person_image"
+                    android:layout_toEndOf="@+id/person_image" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rating"
+                    android:numStars="5"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:isIndicator="true"
+                    android:focusable="false"
+                    android:rating="4.5"
+                    android:clickable="false"
+                    android:layout_below="@+id/movie_name"
+                    android:layout_alignLeft="@+id/movie_name"
+                    android:layout_alignStart="@+id/movie_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adventure"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:id="@+id/genre"
+                    android:textColor="#FFF"
+                    android:textStyle="bold"
+                    android:gravity="start|bottom"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textAlignment="viewStart"
+                    android:layout_below="@+id/rating"
+                    android:layout_alignLeft="@+id/rating"
+                    android:layout_alignStart="@+id/rating" />
+            </RelativeLayout>
+
             <com.ms.square.android.expandabletextview.ExpandableTextView
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
@@ -160,28 +202,6 @@
                             android:textColor="#CCC"
                             android:gravity="start" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="8dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed"
-                            android:textColor="#ffc107"
-                            android:gravity="start"
-                            android:text="Genre"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="normal"
-                            android:textSize="12sp"
-                            android:textColor="#CCC"
-                            android:gravity="start"
-                            android:id="@+id/genre"
-                            android:fontFamily="sans-serif-condensed" />
-                        </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

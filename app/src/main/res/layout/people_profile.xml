@@ -23,7 +23,7 @@
             android:layout_height="280dp"
             android:scaleType="fitXY"
             android:id="@+id/cover_gray"
-            android:background="#99555555"/>
+            android:background="#AA246FA3"/>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"

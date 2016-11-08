@@ -50,7 +50,7 @@ public class PeopleFragment extends Fragment implements FetchFromServerUser{
                 if(!loading && firstVisibleItem + visibleItemCount >= totalItemCount){
                     if(results.getPage() < results.getTotalPages()){
                         loading = true;
-                        msg = showSnack(view, "Loading More Stars...", R.color.blue);
+                        msg = showSnack(view, "Loading More Stars...", R.color.green);
                         new FetchFromServerTask(PeopleFragment.this, 0).execute("https://api.themoviedb.org/3/person/popular?api_key=0d9b1f55e11c548f66e11f78a7f38357" + "&page=" + (results.getPage() + 1));
                     }
                 }
