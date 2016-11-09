@@ -3,15 +3,22 @@ package com.cinemast.cinemast;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
@@ -24,9 +31,12 @@ import Utilities.ImageSlideAdapter;
 import Utilities.ImagesParser;
 import Utilities.MovieDetailsBean;
 import Utilities.MovieDetailsParser;
+import Utilities.MovieVideoParser;
+import Utilities.MovieVideosBean;
 import Utilities.PageIndicator;
+import Utilities.RecyclerItemClickListener;
 
-public class MovieDetail extends FragmentActivity implements FetchFromServerUser {
+public class MovieDetail extends FragmentActivity implements FetchFromServerUser, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     View view;
     TextView genre;
@@ -34,6 +44,7 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
     //TextView year;
     ExpandableTextView overview;
     ImageView poster;
+    private SliderLayout cover;
     TextView censor;
     TextView duration;
     TextView releaseDate;
@@ -53,6 +64,7 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
         duration = (TextView) findViewById(R.id.duration);
         releaseDate = (TextView) findViewById(R.id.release);
         tagline = (TextView) findViewById(R.id.tagline);
+        cover = (SliderLayout) findViewById(R.id.cover);
 
         Intent intent = getIntent();
         movieId = intent.getStringExtra("ID");
@@ -82,6 +94,18 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
         if(id == 0) {
             ImagesParser parser = new ImagesParser(string);
             List<String> images = parser.getImages();
+            for(int i = 0; i < images.size(); i++){
+                TextSliderView textSliderView = new TextSliderView(this);
+                textSliderView
+                    .image("https://image.tmdb.org/t/p/w500/" + images.get(i))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+
+                textSliderView.bundle(new Bundle());
+                textSliderView.getBundle().putString("extra","" + i);
+
+                cover.addSlider(textSliderView);
+            }
         }else if(id == 1) {
             MovieDetailsParser parser = new MovieDetailsParser(string);
             MovieDetailsBean detailsBean = parser.getMovieDetails();
@@ -114,6 +138,28 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
             Fragment castingFragment = new CastingFragment();
             castingFragment.setArguments(data);
             getFragmentManager().beginTransaction().replace(R.id.casting, castingFragment).commit();
+        }else if(id == 2) {
+
         }
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
