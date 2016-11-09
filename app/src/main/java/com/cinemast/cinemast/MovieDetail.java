@@ -95,8 +95,6 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
             }
             genre.setText(genreStr.toString());
             //year.setText("(" + String.valueOf(detailsBean.getRelease_date().split("-")[0]) + ")");
-            TextView txt = (TextView) overview.findViewById(R.id.expandable_text);
-            txt.setTextColor(Color.parseColor("#EEEEEE"));
             overview.setText(detailsBean.getOverview());
             Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
                     .error(R.drawable.notfound)

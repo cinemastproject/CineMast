@@ -39,7 +39,6 @@ public class CastingFragment extends Fragment {
         view = inflater.inflate(R.layout.cast_fragment, container, false);
         TextView header = (TextView) view.findViewById(R.id.header);
         header.setText("Castings");
-        header.setTextColor(Color.parseColor("#FFFFFF"));
         String movieId = getArguments().getString("ID");
 
         api.getCasting(movieId).enqueue(new Callback<CombinedCastDetail>() {
