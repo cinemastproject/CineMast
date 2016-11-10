@@ -14,6 +14,12 @@ public interface API {
     @GET("{path}/{type}?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getMovies(@Path("path") String path, @Path("type") String type, @Query("page") int page);
 
+    @GET("{path}/similar?api_key=" + Constants.API_KEY)
+    Call<MoviesContract> getSimilarMovies(@Path("path") String path);
+
+    @GET("{path}/videos?api_key=" + Constants.API_KEY)
+    Call<MoviesContract> getVideos(@Path("path") String path);
+
     @GET("{path}/{type}?api_key=" + Constants.API_KEY)
     Call<TVContract> getTVShows(@Path("path") String path, @Path("type") String type, @Query("page") int page);
 

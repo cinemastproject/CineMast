@@ -2,7 +2,7 @@ package Utilities;
 
 import java.io.Serializable;
 
-public class    MovieVideosBean implements Serializable{
+public class MovieVideosBean implements Serializable{
 
     private String id;
     private String key;

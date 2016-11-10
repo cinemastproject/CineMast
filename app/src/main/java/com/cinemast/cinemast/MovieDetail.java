@@ -2,17 +2,15 @@ package com.cinemast.cinemast;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
@@ -24,32 +22,42 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import Utilities.CirclePageIndicator;
+import Utilities.CombinedCastDetail;
 import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
-import Utilities.ImageSlideAdapter;
 import Utilities.ImagesParser;
 import Utilities.MovieDetailsBean;
 import Utilities.MovieDetailsParser;
-import Utilities.MovieVideoParser;
-import Utilities.MovieVideosBean;
-import Utilities.PageIndicator;
+import Utilities.MoviesContract;
 import Utilities.RecyclerItemClickListener;
+import network.API;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MovieDetail extends FragmentActivity implements FetchFromServerUser, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
-    View view;
     TextView genre;
     TextView movieName;
-    //TextView year;
     ExpandableTextView overview;
     ImageView poster;
+    ImageView q_start;
+    ImageView q_end;
     private SliderLayout cover;
-    TextView censor;
     TextView duration;
     TextView releaseDate;
     TextView tagline;
+    RatingBar ratingBar;
     String movieId;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://api.themoviedb.org/3/movie/")
+            .build();
+
+    API api = retrofit.create(API.class);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,14 +65,15 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
         setContentView(R.layout.movie_detail);
         genre = (TextView) findViewById(R.id.genre);
         movieName = (TextView) findViewById(R.id.movie_name);
-        //year = (TextView) findViewById(R.id.movie_year);
         overview = (ExpandableTextView) findViewById(R.id.overview);
         poster = (ImageView) findViewById(R.id.poster);
-        censor = (TextView) findViewById(R.id.censor);
         duration = (TextView) findViewById(R.id.duration);
         releaseDate = (TextView) findViewById(R.id.release);
         tagline = (TextView) findViewById(R.id.tagline);
         cover = (SliderLayout) findViewById(R.id.cover);
+        q_start = (ImageView) findViewById(R.id.q_start);
+        q_end = (ImageView) findViewById(R.id.q_end);
+        ratingBar = (RatingBar) findViewById(R.id.rating);
 
         Intent intent = getIntent();
         movieId = intent.getStringExtra("ID");
@@ -75,12 +84,57 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
             new FetchFromServerTask(this, 1).execute("http://api.themoviedb.org/3/movie/" + movieId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
         }
 
-        GenericFragment similarMovies = new GenericFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("TYPE", "Similar Movies");
-        bundle.putString("URL", "https://api.themoviedb.org/3/movie/" + movieId + "/similar?api_key=0d9b1f55e11c548f66e11f78a7f38357");
-        similarMovies.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.similar, similarMovies).commit();
+        api.getCasting(movieId).enqueue(new Callback<CombinedCastDetail>() {
+            @Override
+            public void onResponse(Call<CombinedCastDetail> call, Response<CombinedCastDetail> response) {
+                final List<CombinedCastDetail.CastDetail> castList = response.body().getCast();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.casts);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MovieDetail.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(MovieDetail.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(MovieDetail.this, Profile.class);
+                        detailActivity.putExtra("ID", castList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                CastingAdapter adapter = new CastingAdapter(MovieDetail.this, castList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<CombinedCastDetail> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+        api.getSimilarMovies(movieId).enqueue(new Callback<MoviesContract>() {
+            @Override
+            public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
+                final List<MovieDetailsBean> moviesList = response.body().getResults();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.similar_movies);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MovieDetail.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(MovieDetail.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(MovieDetail.this, MovieDetail.class);
+                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                MoviesAdapter adapter = new MoviesAdapter(MovieDetail.this, moviesList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<MoviesContract> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 
     @Override
@@ -118,26 +172,26 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
                     genreStr.append(" | ");
             }
             genre.setText(genreStr.toString());
-            //year.setText("(" + String.valueOf(detailsBean.getRelease_date().split("-")[0]) + ")");
             overview.setText(detailsBean.getOverview());
             Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
                     .error(R.drawable.notfound)
                     .placeholder(R.drawable.movie)
                     .into(poster);
-            censor.setText(detailsBean.isAdult() ? "A" : "UA");
             duration.setText(detailsBean.getRuntime() / 60 + " hrs " + detailsBean.getRuntime() % 60 + " mins");
             releaseDate.setText(detailsBean.getRelease_date());
-            tagline.setText(detailsBean.getTagline());
+            ratingBar.setRating((float)detailsBean.getPopularity() / 2);
+            if(detailsBean.getTagline() == null || detailsBean.getTagline().trim().length() == 0) {
+                tagline.setVisibility(View.INVISIBLE);
+                q_start.setVisibility(View.INVISIBLE);
+                q_end.setVisibility(View.INVISIBLE);
+            }else
+                tagline.setText(detailsBean.getTagline());
 
             Fragment movieVideoFragment = new MovieVideoFragment();
             Bundle data = new Bundle();
             data.putString("ID", movieId);
             movieVideoFragment.setArguments(data);
             getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
-
-            Fragment castingFragment = new CastingFragment();
-            castingFragment.setArguments(data);
-            getFragmentManager().beginTransaction().replace(R.id.casting, castingFragment).commit();
         }else if(id == 2) {
 
         }

@@ -41,7 +41,6 @@ public class ShowDetails extends AppCompatActivity implements FetchFromServerUse
         //year = (TextView) findViewById(R.id.movie_year);
         overview = (TextView) findViewById(R.id.overview);
         poster = (ImageView) findViewById(R.id.poster);
-        censor = (TextView) findViewById(R.id.censor);
         duration = (TextView) findViewById(R.id.duration);
         releaseDate = (TextView) findViewById(R.id.release);
         tagline = (TextView) findViewById(R.id.tagline);
