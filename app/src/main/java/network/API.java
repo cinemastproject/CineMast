@@ -4,6 +4,7 @@ import Utilities.CombinedCastDetail;
 import Utilities.Constants;
 import Utilities.MoviesContract;
 import Utilities.PersonImagesBean;
+import Utilities.SearchResultsBean;
 import Utilities.TVContract;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -31,4 +32,7 @@ public interface API {
 
     @GET("{path}/images?api_key=" + Constants.API_KEY)
     Call<PersonImagesBean> getPersonImages(@Path("path") String path);
+
+    @GET("multi?api_key=" + Constants.API_KEY)
+    Call<SearchResultsBean> getMultiSearchResult(@Query("query") String query);
 }
