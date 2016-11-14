@@ -189,11 +189,10 @@ public class MovieDetail extends FragmentActivity implements FetchFromServerUser
 
             Fragment movieVideoFragment = new MovieVideoFragment();
             Bundle data = new Bundle();
+            data.putString("TYPE", "movie");
             data.putString("ID", movieId);
             movieVideoFragment.setArguments(data);
             getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
-        }else if(id == 2) {
-
         }
     }
 

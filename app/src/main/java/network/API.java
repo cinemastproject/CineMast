@@ -18,6 +18,9 @@ public interface API {
     @GET("{path}/similar?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getSimilarMovies(@Path("path") String path);
 
+    @GET("{path}/recommendations?api_key=" + Constants.API_KEY)
+    Call<MoviesContract> getRecommendations(@Path("path") String path);
+
     @GET("{path}/videos?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getVideos(@Path("path") String path);
 

@@ -248,7 +248,7 @@ public class TVShowDetailBean implements Serializable {
         this.original_name = original_name;
     }
 
-    class Season implements Serializable {
+    public class Season implements Serializable {
         private String air_date;
         private int episode_count;
         private String id;

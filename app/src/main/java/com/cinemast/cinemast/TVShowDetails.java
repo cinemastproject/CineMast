@@ -2,79 +2,170 @@ package com.cinemast.cinemast;
 
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.List;
 
+import Utilities.CombinedCastDetail;
 import Utilities.FetchFromServerTask;
 import Utilities.FetchFromServerUser;
+import Utilities.GenreDetail;
+import Utilities.ImagesParser;
+import Utilities.MovieDetailsBean;
+import Utilities.MovieDetailsParser;
+import Utilities.MoviesContract;
+import Utilities.RecyclerItemClickListener;
+import Utilities.SeasonDetailsBean;
 import Utilities.TVShowDetailBean;
 import Utilities.TVShowDetailParser;
+import network.API;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TVShowDetails extends Activity implements FetchFromServerUser {
-    View view;
+public class TVShowDetails extends Activity implements FetchFromServerUser, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+
     TextView genre;
-    TextView tvShowName;
-    TextView year;
-    TextView overview;
+    TextView showName;
+    ExpandableTextView overview;
     ImageView poster;
-    TextView createdBy;
+    ImageView q_start;
+    ImageView q_end;
+    private SliderLayout cover;
     TextView duration;
-    TextView firstAirDate;
-    TextView noOfSeason;
-    TextView noOfEpisode;
-    ImageView tvShowImage;
-    int tvShowID;
-    private SliderLayout mDemoSlider;
+    TextView releaseDate;
+    TextView tagline;
+    RatingBar ratingBar;
+    int tvId;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://api.themoviedb.org/3/tv/")
+            .build();
+
+    API api = retrofit.create(API.class);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tv_show_layout);
         genre = (TextView) findViewById(R.id.genre);
-        tvShowName = (TextView) findViewById(R.id.tv_show_name);
-        year = (TextView) findViewById(R.id.tv_show_year);
-        overview = (TextView) findViewById(R.id.overview);
+        showName = (TextView) findViewById(R.id.movie_name);
+        overview = (ExpandableTextView) findViewById(R.id.overview);
         poster = (ImageView) findViewById(R.id.poster);
-        createdBy = (TextView) findViewById(R.id.created_by);
         duration = (TextView) findViewById(R.id.duration);
-        firstAirDate = (TextView) findViewById(R.id.first_air_date);
-        noOfSeason = (TextView) findViewById(R.id.no_Of_seasons);
-        noOfEpisode = (TextView) findViewById(R.id.no_Of_episodes);
-        //tvShowImage = (ImageView) findViewById(R.id.tv_show_images);
-
-        mDemoSlider = (SliderLayout)findViewById(R.id.slider);
-
-        HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
-
-
-        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(4000);
-        //mDemoSlider.addOnPageChangeListener(this);
+        releaseDate = (TextView) findViewById(R.id.release);
+        tagline = (TextView) findViewById(R.id.tagline);
+        cover = (SliderLayout) findViewById(R.id.cover);
+        q_start = (ImageView) findViewById(R.id.q_start);
+        q_end = (ImageView) findViewById(R.id.q_end);
+        ratingBar = (RatingBar) findViewById(R.id.rating);
 
         Intent intent = getIntent();
-        tvShowID = intent.getIntExtra("ID", -1);
+        tvId = intent.getIntExtra("ID", 0);
 
-        if(tvShowID != -1) {
+        Log.d("MovieDetail", "http://api.themoviedb.org/3/movie/" + tvId + "/images?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/tv/" + tvId + "/images?api_key=0d9b1f55e11c548f66e11f78a7f38357");
+        new FetchFromServerTask(this, 1).execute("http://api.themoviedb.org/3/tv/" + tvId + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
 
-            new FetchFromServerTask(this, 0).execute("http://api.themoviedb.org/3/tv/" + tvShowID + "?api_key=0d9b1f55e11c548f66e11f78a7f38357");
-        }
+        api.getCasting(String.valueOf(tvId)).enqueue(new Callback<CombinedCastDetail>() {
+            @Override
+            public void onResponse(Call<CombinedCastDetail> call, Response<CombinedCastDetail> response) {
+                final List<CombinedCastDetail.CastDetail> castList = response.body().getCast();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.casts);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(TVShowDetails.this, Profile.class);
+                        detailActivity.putExtra("ID", castList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                CastingAdapter adapter = new CastingAdapter(TVShowDetails.this, castList);
+                recyclerView.setAdapter(adapter);
+            }
 
+            @Override
+            public void onFailure(Call<CombinedCastDetail> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+        api.getSimilarMovies(String.valueOf(tvId)).enqueue(new Callback<MoviesContract>() {
+            @Override
+            public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
+                final List<MovieDetailsBean> moviesList = response.body().getResults();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.similar_movies);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(TVShowDetails.this, MovieDetail.class);
+                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                MoviesAdapter adapter = new MoviesAdapter(TVShowDetails.this, moviesList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<MoviesContract> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+        api.getRecommendations(String.valueOf(tvId)).enqueue(new Callback<MoviesContract>() {
+            @Override
+            public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
+                final List<MovieDetailsBean> moviesList = response.body().getResults();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recommendations);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(TVShowDetails.this, MovieDetail.class);
+                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                MoviesAdapter adapter = new MoviesAdapter(TVShowDetails.this, moviesList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<MoviesContract> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 
     @Override
@@ -84,73 +175,88 @@ public class TVShowDetails extends Activity implements FetchFromServerUser {
 
     @Override
     public void onFetchCompletion(String string, int id) {
+        if(id == 0) {
+            ImagesParser parser = new ImagesParser(string);
+            List<String> images = parser.getImages();
+            for(int i = 0; i < images.size(); i++){
+                TextSliderView textSliderView = new TextSliderView(this);
+                textSliderView
+                        .image("https://image.tmdb.org/t/p/w500/" + images.get(i))
+                        .setScaleType(BaseSliderView.ScaleType.Fit)
+                        .setOnSliderClickListener(this);
 
-        TVShowDetailParser parser = new TVShowDetailParser(string);
-        try {
-            TVShowDetailBean detailsBean = parser.getTvShowDetail();
-            tvShowName.setText(detailsBean.getName());
-            int i = 0;
-            int sizeGenre = detailsBean.getGenreDetails().size();
-            String[] genreString = new String[sizeGenre];
-            while(i < sizeGenre) {
-                genreString[i] = detailsBean.getGenreDetails().get(i).getName();
-                i++;
-            }
-            StringBuilder genreStr = new StringBuilder();
-            for (i = 0; i < genreString.length; i++) {
-                genreStr.append(genreString[i]);
-                if (i < genreString.length - 1)
-                    genreStr.append(" | ");
-            }
-            genre.setText(genreStr.toString());
-            year.setText("(" + String.valueOf(detailsBean.getFirst_air_date().split("-")[0]) + ")");
-            overview.setText(detailsBean.getOverview());
-            Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
-                    .error(R.drawable.notfound)
-                    .placeholder(R.drawable.movie)
+                textSliderView.bundle(new Bundle());
+                textSliderView.getBundle().putString("extra","" + i);
 
-                    .into(poster);
-            Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
-                    .error(R.drawable.notfound)
-                    .placeholder(R.drawable.movie)
-                    .into(tvShowImage);
-            int sizeCreatedBy = detailsBean.getCreatedBy().size();
-            String[] createdByString = new String[sizeCreatedBy];
-            i = 0;
-            while(i < sizeCreatedBy) {
-                createdByString[i] = detailsBean.getCreatedBy().get(i).getName();
-                i++;
+                cover.addSlider(textSliderView);
             }
-            StringBuilder createdByStr = new StringBuilder();
-            for (i = 0; i < createdByString.length; i++) {
-                createdByStr.append(createdByString[i]);
-                if (i < createdByString.length - 1)
-                    createdByStr.append("\n");
+        }else if(id == 1) {
+            try {
+                TVShowDetailParser parser = new TVShowDetailParser(string);
+                TVShowDetailBean detailsBean = parser.getTvShowDetail();
+                showName.setText(detailsBean.getName());
+                StringBuilder genreStr = new StringBuilder();
+                List<GenreDetail> genreDetailList = detailsBean.getGenreDetails();
+                for (int i = 0; i < genreDetailList.size(); i++) {
+                    genreStr.append(genreDetailList.get(i).getName());
+                    if (i < genreDetailList.size() - 1)
+                        genreStr.append(" | ");
+                }
+                genre.setText(genreStr.toString());
+                overview.setText(detailsBean.getOverview());
+                Picasso.with(this).load("https://image.tmdb.org/t/p/w320/" + detailsBean.getPoster_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(poster);
+                duration.setText(detailsBean.getEpisode_run_time()[0] / 60 + " hrs " + detailsBean.getEpisode_run_time()[0] % 60 + " mins");
+                releaseDate.setText(detailsBean.getFirst_air_date());
+                ratingBar.setRating((float) detailsBean.getPopularity() / 2);
+
+                final List<TVShowDetailBean.Season> moviesList = detailsBean.getSeasons();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.seasons);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent detailActivity = new Intent(TVShowDetails.this, MovieDetail.class);
+                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        startActivity(detailActivity);
+                    }
+                }));
+                recyclerView.setHasFixedSize(true);
+                GenericAdapter adapter = new GenericAdapter(TVShowDetails.this, moviesList);
+                recyclerView.setAdapter(adapter);
+
+                Fragment movieVideoFragment = new MovieVideoFragment();
+                Bundle data = new Bundle();
+                data.putString("TYPE", "tv");
+                data.putString("ID", String.valueOf(tvId));
+                movieVideoFragment.setArguments(data);
+                getFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
+            }catch (Exception ex) {
+
             }
-            createdBy.setText(createdByStr.toString());
-            int[] episodeRunTime = detailsBean.getEpisode_run_time();
-            StringBuilder episodeRunTimeStr = new StringBuilder();
-            for (i = 0; i < episodeRunTime.length; i++) {
-                episodeRunTimeStr.append(episodeRunTime[i]);
-                if (i <= episodeRunTime.length - 1)
-                    episodeRunTimeStr.append(" mins\n");
-            }
-            duration.setText(episodeRunTimeStr.toString());
-            firstAirDate.setText(detailsBean.getFirst_air_date());
-            noOfSeason.setText(String.valueOf(detailsBean.getNumber_of_seasons()));
-            noOfEpisode.setText(String.valueOf(detailsBean.getNumber_of_episodes()));
-            /*Fragment movieteVideoFragment = new MovieVideoFragment();
-            Bundle data = new Bundle();
-            data.putInt("ID", movieId);
-            movieVideoFragment.setArguments(data);
-            getSupportFragmentManager().beginTransaction().replace(R.id.video_frames, movieVideoFragment).commit();
-            */
-        }catch (Exception ex){
-            ex.printStackTrace();
         }
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
 
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+    }
 
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }

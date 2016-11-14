@@ -13,11 +13,12 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import Utilities.CombinedCastDetail;
+import Utilities.TVShowDetailBean;
 
 public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHolder>{
 
     Context context;
-    List<CombinedCastDetail.CastDetail> list;
+    List<?> list;
     LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -32,7 +33,7 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
         }
     }
 
-    public GenericAdapter(Context context, List<CombinedCastDetail.CastDetail> list){
+    public GenericAdapter(Context context, List<?> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -53,14 +54,26 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
         View view = inflater.inflate(R.layout.display_item, parent, false);
         return new ViewHolder(view);
     }
-
+    
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(list.get(position).getOriginal_title());
-        if(list.get(position).getPoster_path() != null)
-            Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + list.get(position).getPoster_path())
-                    .error(R.drawable.notfound)
-                    .placeholder(R.drawable.movie)
-                    .into(holder.poster);
+
+        if(list.get(position) instanceof CombinedCastDetail.CastDetail) {
+            CombinedCastDetail.CastDetail item = (CombinedCastDetail.CastDetail)list.get(position);
+            holder.title.setText(item.getOriginal_title());
+            if (item.getPoster_path() != null)
+                Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getPoster_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(holder.poster);
+        }else if(list.get(position) instanceof TVShowDetailBean.Season) {
+            TVShowDetailBean.Season item = (TVShowDetailBean.Season)list.get(position);
+            holder.title.setText("Season " + item.getSeason_number());
+            if (item.getPoster_path() != null)
+                Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getPoster_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(holder.poster);
+        }
     }
 }
