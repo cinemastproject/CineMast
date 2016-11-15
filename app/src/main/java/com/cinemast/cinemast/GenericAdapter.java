@@ -54,7 +54,7 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
         View view = inflater.inflate(R.layout.display_item, parent, false);
         return new ViewHolder(view);
     }
-    
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 

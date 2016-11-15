@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/sumitkumar/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_3613ee50ed66ade5768b096a05a72a653f4869c4.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -72,6 +81,15 @@
         revision="23.0.2"
         sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
         <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_c5958c1681a00ce76ade650770bfe88ec44abc1e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.github.lawloretienne/imagegallery/0.0.15/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="317aae484ddf1429dfb0be832f0a133e906a2f9a">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.github.lawloretienne-imagegallery-0.0.15_267e46fe81dd98517c3c0d01a8b9e8281e4870e2.jar" />
     </item>
     <item
         is-multidex="false"
@@ -198,6 +216,15 @@
         revision="23.0.2"
         sha1="b305cfd7ae732d7c146fe3046aea90f877c3892b">
         <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.ms-square-expandableTextView-0.1.4_7ed3fe55dbac4489cb726ab014edb02a40ecd5ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3b7105277df9a8013468215c451ddefac2499d3a">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-24.2.1_0c83a206af277be38fdf32cd89e69ae13c0b08bc.jar" />
     </item>
     <item
         is-multidex="false"

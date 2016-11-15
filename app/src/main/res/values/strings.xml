@@ -2,4 +2,5 @@
     <string name="app_name">CineMast</string>
     <string name="new_movies">New In Theater</string>
     <string name="title_activity_movie_detail">Movie Detail</string>
+    <string name="title_activity_image_gallery">ImageGallery</string>
 </resources>
