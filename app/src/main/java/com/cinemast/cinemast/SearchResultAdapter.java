@@ -69,6 +69,12 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                 holder.name.setText(list.get(position).getName());
             }else if(list.get(position).getMedia_type().equals("person")) {
                 holder.name.setText(list.get(position).getName());
+                if(list.get(position).getProfile_path() != null)
+                    Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + list.get(position).getProfile_path())
+                            .error(R.drawable.notfound)
+                            .placeholder(R.drawable.movie)
+                            .error(R.drawable.notfound)
+                            .into(holder.image);
             }
             holder.type.setText(list.get(position).getMedia_type().toUpperCase());
             if(list.get(position).getPoster_path() != null)

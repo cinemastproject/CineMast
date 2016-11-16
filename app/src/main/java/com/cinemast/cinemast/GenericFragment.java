@@ -36,7 +36,8 @@ public class GenericFragment extends Fragment {
     String heading;
     List<MovieDetailsBean> moviesList = new ArrayList<>();
     List<TvShowsBean> tvShowsList = new ArrayList<>();
-    MoviesAdapter adapter;
+    MoviesAdapter movieAdapter;
+    TvShowAdapter tvAdapter;
 
     String type;
     String mClass;
@@ -64,10 +65,29 @@ public class GenericFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+        for(int i = 0; i < 5; i++) {
+            MovieDetailsBean loading = new MovieDetailsBean();
+            loading.setId(null);
+            loading.setTitle("Loading...");
+            moviesList.add(i, loading);
+        }
+        movieAdapter = new MoviesAdapter(getActivity(), moviesList);
+        recyclerView.setAdapter(movieAdapter);
+
+        for(int i = 0; i < 5; i++) {
+            TvShowsBean loading = new TvShowsBean();
+            loading.setId(-1);
+            loading.setName("Loading...");
+            tvShowsList.add(i, loading);
+        }
+        tvAdapter = new TvShowAdapter(getActivity(), tvShowsList);
+        recyclerView.setAdapter(tvAdapter);
+
         if(type.equals("MOVIES")) {
             api.getMovies("movie", mClass, 1).enqueue(new Callback<MoviesContract>() {
                 @Override
                 public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
+                    moviesList.clear();
                     moviesList = response.body().getResults();
 
                     if (getActivity() != null) {
@@ -77,13 +97,15 @@ public class GenericFragment extends Fragment {
                                 recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-                                        Intent detailActivity = new Intent(getActivity(), MovieDetail.class);
-                                        detailActivity.putExtra("ID", moviesList.get(position).getId());
-                                        startActivity(detailActivity);
+                                        if(moviesList.get(position).getId() != null) {
+                                            Intent detailActivity = new Intent(getActivity(), MovieDetail.class);
+                                            detailActivity.putExtra("ID", moviesList.get(position).getId());
+                                            startActivity(detailActivity);
+                                        }
                                     }
                                 }));
-                                adapter = new MoviesAdapter(getActivity(), moviesList);
-                                recyclerView.setAdapter(adapter);
+                                movieAdapter = new MoviesAdapter(getActivity(), moviesList);
+                                recyclerView.setAdapter(movieAdapter);
                             } catch (Exception ex) {
                                 showSnack(view, ex.getMessage(), R.color.red);
                             }
@@ -102,17 +124,20 @@ public class GenericFragment extends Fragment {
                 public void onResponse(Call<TVContract> call, Response<TVContract> response) {
                     if(getActivity() != null) {
                         try {
+                            tvShowsList.clear();
                             tvShowsList = response.body().getResults();
                             recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-                                    Intent detailActivity = new Intent(getActivity(), TVShowDetails.class);
-                                    detailActivity.putExtra("ID", tvShowsList.get(position).getId());
-                                    startActivity(detailActivity);
+                                    if(tvShowsList.get(position).getId() != -1) {
+                                        Intent detailActivity = new Intent(getActivity(), TVShowDetails.class);
+                                        detailActivity.putExtra("ID", tvShowsList.get(position).getId());
+                                        startActivity(detailActivity);
+                                    }
                                 }
                             }));
-                            TvShowAdapter adapter = new TvShowAdapter(getParentFragment().getActivity(), tvShowsList);
-                            recyclerView.setAdapter(adapter);
+                            tvAdapter = new TvShowAdapter(getParentFragment().getActivity(), tvShowsList);
+                            recyclerView.setAdapter(tvAdapter);
 
                         } catch (Exception ex) {
                             //showSnack(view, ex.getMessage(), R.color.red);

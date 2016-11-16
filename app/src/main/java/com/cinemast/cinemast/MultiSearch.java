@@ -75,7 +75,21 @@ public class MultiSearch extends Activity {
                             recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(MultiSearch.this, new RecyclerItemClickListener.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-
+                                    if(results.get(position).getMedia_type().equals("person")) {
+                                        Intent peopleDetail = new Intent(MultiSearch.this, Profile.class);
+                                        peopleDetail.putExtra("ID", String.valueOf(results.get(position).getId()));
+                                        startActivity(peopleDetail);
+                                    }
+                                    else if(results.get(position).getMedia_type().equals("movie")) {
+                                        Intent movieDetail = new Intent(MultiSearch.this, MovieDetail.class);
+                                        movieDetail.putExtra("ID", String.valueOf(results.get(position).getId()));
+                                        startActivity(movieDetail);
+                                    }
+                                    else if(results.get(position).getMedia_type().equals("tv")) {
+                                        Intent tvShowDetail = new Intent(MultiSearch.this, TVShowDetails.class);
+                                        tvShowDetail.putExtra("ID", results.get(position).getId());
+                                        startActivity(tvShowDetail);
+                                    }
                                 }
                             }));
                             recyclerView.setHasFixedSize(true);
