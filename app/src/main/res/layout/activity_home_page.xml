@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".HomePage">
+    tools:context=".common.HomePage">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -44,7 +44,7 @@
             android:id="@+id/search" />
     </LinearLayout>
 
-    <Utilities.SlidingTabLayout
+    <com.cinemast.cinemast.utils.SlidingTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_below="@id/contentDescription"

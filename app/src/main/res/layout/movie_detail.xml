@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MovieDetail">
+    tools:context=".movies.MovieDetail">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"/>
 
-                <Utilities.Triangle
+                <com.cinemast.cinemast.utils.Triangle
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_alignBottom="@+id/cover"
@@ -78,7 +78,6 @@
 
                     <ImageView
                         android:id="@+id/poster"
-                        android:src="@drawable/finding_dory"
                         android:scaleType="fitXY"
                         android:layout_width="120dp"
                         android:layout_height="170dp"/>

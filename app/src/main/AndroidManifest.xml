@@ -10,26 +10,26 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomePage">
+        <activity android:name=".common.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile" />
+        <activity android:name=".person.Profile" />
         <activity
-            android:name=".TVShowDetails"
+            android:name=".tv.TVShowDetails"
             android:label="Series Detail" />
         <activity
-            android:name=".MovieDetail"
+            android:name=".movies.MovieDetail"
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MultiSearch" />
+        <activity android:name=".search.MultiSearch" />
         <activity
-            android:name=".ImageGallery"
-            android:label="@string/title_activity_image_gallery"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".tv.SeasonActivity"
+            android:label="@string/title_activity_movie_detail"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
