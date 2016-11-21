@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".person.Profile">
+        tools:context="com.dev.infinity.yellow.person.Profile">
     <RelativeLayout
         android:orientation="vertical"
         android:background="#FFF"
@@ -102,7 +102,7 @@
                 android:background="@drawable/ellipse"/>
         </LinearLayout>
 
-        <com.cinemast.cinemast.utils.Triangle
+        <com.dev.infinity.yellow.utils.Triangle
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignBottom="@+id/cover"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".movies.MovieDetail">
+    tools:context="com.dev.infinity.yellow.movies.MovieDetail">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"/>
 
-                <com.cinemast.cinemast.utils.Triangle
+                <com.dev.infinity.yellow.utils.Triangle
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_alignBottom="@+id/cover"
