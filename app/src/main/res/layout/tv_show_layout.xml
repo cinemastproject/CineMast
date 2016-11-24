@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.dev.infinity.yellow.movies.MovieDetail">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -51,51 +51,11 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"/>
 
-                <com.dev.infinity.yellow.utils.Triangle
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_alignBottom="@+id/cover"
-                    android:id="@+id/view" />
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:elevation="10dp"
-                    app:fabSize="normal"
-                    app:rippleColor="#CCC"
-                    android:src="@drawable/ic_add_white_24dp"
-                    app:backgroundTint="@color/colorPrimary"
-                    android:layout_alignBottom="@+id/cover"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="32dp"
-                    android:id="@+id/fab" />
-
-                <android.support.v7.widget.CardView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/poster_card"
-                    android:layout_marginLeft="33dp"
-                    android:layout_marginStart="33dp"
-                    android:layout_alignTop="@+id/view"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    card_view:elevation="20dp"
-                    card_view:cardCornerRadius="5dp">
-
-                    <ImageView
-                        android:id="@+id/poster"
-                        android:scaleType="fitXY"
-                        android:layout_width="120dp"
-                        android:layout_height="170dp"/>
-                </android.support.v7.widget.CardView>
-
                 <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginTop="8dp"
                     android:id="@+id/rating"
                     android:numStars="5"
@@ -111,9 +71,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adventure | Action | Comedy | Something | Something"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:id="@+id/genre"
@@ -132,7 +89,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2:50 min"
                     android:textStyle="normal|italic"
                     android:textSize="12sp"
                     android:textColor="#777"
@@ -147,7 +103,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
-                    android:text="12-12-1995"
                     android:textStyle="normal|italic"
                     android:textSize="12sp"
                     android:textColor="#777"
@@ -158,25 +113,43 @@
                     android:layout_toLeftOf="@+id/duration"
                     android:layout_toStartOf="@+id/duration" />
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/poster_card"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginStart="13dp"
+                    app:elevation="20dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_alignBottom="@+id/genre"
+                    android:layout_alignLeft="@+id/back"
+                    android:layout_alignStart="@+id/back">
+
+                    <ImageView
+                        android:id="@+id/poster"
+                        android:scaleType="fitXY"
+                        android:layout_width="120dp"
+                        android:layout_height="170dp"/>
+                </android.support.v7.widget.CardView>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:paddingStart="16dp"
-                    android:paddingLeft="16dp"
+                    android:paddingEnd="16dp"
                     android:id="@+id/movie_name"
                     android:textColor="#555"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:gravity="end|bottom"
-                    android:text="The Shawshank Redumption"
                     android:fontFamily="sans-serif-condensed"
                     android:textAlignment="textEnd"
-                    android:layout_alignTop="@+id/view"
-                    android:layout_alignRight="@+id/fab"
-                    android:layout_alignEnd="@+id/fab"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_below="@+id/cover"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_toRightOf="@+id/poster_card"
                     android:layout_toEndOf="@+id/poster_card" />
 

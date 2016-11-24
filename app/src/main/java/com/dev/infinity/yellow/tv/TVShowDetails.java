@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.dev.infinity.yellow.R;
 import com.dev.infinity.yellow.common.MovieVideoAdapter;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
+import com.dev.infinity.yellow.modals.MoviesContract;
+import com.dev.infinity.yellow.modals.ResultsContract;
 import com.dev.infinity.yellow.person.CastingAdapter;
 import com.dev.infinity.yellow.common.GenericAdapter;
 import com.dev.infinity.yellow.movies.MovieDetail;
@@ -42,7 +44,6 @@ import com.dev.infinity.yellow.modals.CombinedCastDetail;
 import com.dev.infinity.yellow.modals.GenreDetail;
 import com.dev.infinity.yellow.modals.ImagesBean;
 import com.dev.infinity.yellow.modals.MovieDetailsBean;
-import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
 import com.dev.infinity.yellow.modals.TVShowDetailBean;
 import com.dev.infinity.yellow.utils.Utils;
@@ -94,6 +95,15 @@ public class TVShowDetails extends Activity implements FullScreenImageGalleryAda
         cover = (SliderLayout) findViewById(R.id.cover);
         ratingBar = (RatingBar) findViewById(R.id.rating);
 
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TVShowDetails.this.finish();
+            }
+        });
+
         Intent intent = getIntent();
         tvId = intent.getIntExtra("ID", 0);
 
@@ -105,7 +115,7 @@ public class TVShowDetails extends Activity implements FullScreenImageGalleryAda
                 TVShowDetailBean bean = response.body();
                 showName.setText(bean.getName());
                 StringBuilder genreStr = new StringBuilder();
-                List<GenreDetail> genreDetailList = bean.getGenreDetails();
+                List<GenreDetail> genreDetailList = bean.getgenres();
                 for (int i = 0; i < genreDetailList.size(); i++) {
                     genreStr.append(genreDetailList.get(i).getName());
                     if (i < genreDetailList.size() - 1)
@@ -259,28 +269,28 @@ public class TVShowDetails extends Activity implements FullScreenImageGalleryAda
             }
         });
 
-        api.getSimilarMovies(String.valueOf(tvId)).enqueue(new Callback<MoviesContract>() {
+        api.getSimilarShows(String.valueOf(tvId)).enqueue(new Callback<ResultsContract>() {
             @Override
-            public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
-                final List<MovieDetailsBean> moviesList = response.body().getResults();
+            public void onResponse(Call<ResultsContract> call, Response<ResultsContract> response) {
+                final List<TVShowDetailBean> showsList = response.body().getResults();
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.similar_movies);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent detailActivity = new Intent(TVShowDetails.this, MovieDetail.class);
-                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        Intent detailActivity = new Intent(TVShowDetails.this, TVShowDetails.class);
+                        detailActivity.putExtra("ID", showsList.get(position).getId());
                         startActivity(detailActivity);
                     }
                 }));
                 recyclerView.setHasFixedSize(true);
-                MoviesAdapter adapter = new MoviesAdapter(TVShowDetails.this, moviesList);
+                GenericAdapter adapter = new GenericAdapter(TVShowDetails.this, showsList);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<MoviesContract> call, Throwable t) {
+            public void onFailure(Call<ResultsContract> call, Throwable t) {
                 t.printStackTrace();
             }
         });

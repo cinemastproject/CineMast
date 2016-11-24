@@ -1,9 +1,9 @@
 package com.dev.infinity.yellow.tv;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,7 +39,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SeasonActivity extends AppCompatActivity implements FullScreenImageGalleryAdapter.FullScreenImageLoader  {
+public class SeasonActivity extends Activity implements FullScreenImageGalleryAdapter.FullScreenImageLoader  {
 
     Retrofit retrofit = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

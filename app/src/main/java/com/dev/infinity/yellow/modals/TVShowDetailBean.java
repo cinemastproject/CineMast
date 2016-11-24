@@ -9,7 +9,7 @@ public class TVShowDetailBean implements Serializable {
     private List<CreatedByDetail> createdBy;
     private int[] episode_run_time;
     private String first_air_date;
-    private List<GenreDetail> genreDetails;
+    private List<GenreDetail> genres;
     private String homepage;
     private String id;
     private boolean in_production;
@@ -34,7 +34,7 @@ public class TVShowDetailBean implements Serializable {
 
     public TVShowDetailBean(){
         createdBy = new ArrayList<>();
-        genreDetails = new ArrayList<>();
+        genres = new ArrayList<>();
         networkDetails = new ArrayList<>();
         companyDetails = new ArrayList<>();
         seasons = new ArrayList<>();
@@ -72,12 +72,12 @@ public class TVShowDetailBean implements Serializable {
         this.first_air_date = first_air_date;
     }
 
-    public List<GenreDetail> getGenreDetails() {
-        return genreDetails;
+    public List<GenreDetail> getgenres() {
+        return genres;
     }
 
-    public void setGenreDetails(List<GenreDetail> genreDetails) {
-        this.genreDetails = genreDetails;
+    public void setgenres(List<GenreDetail> genreDetails) {
+        this.genres = genreDetails;
     }
 
     public String getHomepage() {

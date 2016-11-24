@@ -19,16 +19,16 @@ import com.dev.infinity.yellow.modals.TVShowDetailBean;
 
 public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHolder>{
 
-    Context context;
-    List<?> list;
-    LayoutInflater inflater;
+    private Context context;
+    private List<?> list;
+    private LayoutInflater inflater;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
         private ImageView poster;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             poster = (ImageView) itemView.findViewById(R.id.moviePoster);
@@ -81,6 +81,14 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
             holder.title.setText(item.getName());
             if (item.getStill_path() != null)
                 Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getStill_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(holder.poster);
+        }else if(list.get(position) instanceof TVShowDetailBean) {
+            TVShowDetailBean item = (TVShowDetailBean)list.get(position);
+            holder.title.setText(item.getName());
+            if (item.getPoster_path() != null)
+                Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getPoster_path())
                         .error(R.drawable.notfound)
                         .placeholder(R.drawable.movie)
                         .into(holder.poster);

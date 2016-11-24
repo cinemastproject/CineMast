@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dev.infinity.yellow.R;
+import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.movies.MovieDetail;
 import com.dev.infinity.yellow.movies.MoviesAdapter;
 import com.dev.infinity.yellow.tv.TVShowDetails;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dev.infinity.yellow.modals.MovieDetailsBean;
-import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
 import com.dev.infinity.yellow.modals.TVContract;
 import com.dev.infinity.yellow.modals.TvShowsBean;

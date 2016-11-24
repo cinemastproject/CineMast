@@ -1,14 +1,19 @@
 package com.dev.infinity.yellow.movies;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,21 +22,27 @@ import com.dev.infinity.yellow.R;
 import com.dev.infinity.yellow.common.MovieVideoAdapter;
 import com.dev.infinity.yellow.modals.GenreDetail;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
+import com.dev.infinity.yellow.modals.MoviesContract;
+import com.dev.infinity.yellow.modals.ResultsContract;
 import com.dev.infinity.yellow.person.CastingAdapter;
 import com.dev.infinity.yellow.person.Profile;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.dev.infinity.yellow.utils.Utils;
+import com.etiennelawlor.imagegallery.library.activities.FullScreenImageGalleryActivity;
+import com.etiennelawlor.imagegallery.library.adapters.FullScreenImageGalleryAdapter;
+import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.dev.infinity.yellow.modals.CombinedCastDetail;
 import com.dev.infinity.yellow.modals.ImagesBean;
 import com.dev.infinity.yellow.modals.MovieDetailsBean;
-import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
 import network.API;
 import retrofit2.Call;
@@ -40,7 +51,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MovieDetail extends FragmentActivity {
+public class MovieDetail extends FragmentActivity implements FullScreenImageGalleryAdapter.FullScreenImageLoader {
 
     private TextView genre;
     private TextView movieName;
@@ -68,6 +79,8 @@ public class MovieDetail extends FragmentActivity {
 
     private API apiVideo = retrofitVideo.create(API.class);
 
+    private PaletteColorType paletteColorType;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +96,16 @@ public class MovieDetail extends FragmentActivity {
         q_start = (ImageView) findViewById(R.id.q_start);
         q_end = (ImageView) findViewById(R.id.q_end);
         ratingBar = (RatingBar) findViewById(R.id.rating);
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MovieDetail.this.finish();
+            }
+        });
+
+        paletteColorType = PaletteColorType.VIBRANT;
 
         Intent intent = getIntent();
         String movieId = intent.getStringExtra("ID");
@@ -152,9 +175,34 @@ public class MovieDetail extends FragmentActivity {
             api.getImages(movieId).enqueue(new Callback<ImagesBean>() {
                 @Override
                 public void onResponse(Call<ImagesBean> call, Response<ImagesBean> response) {
+
                     List<ImagesBean.Profile> posters = response.body().getPosters();
                     List<ImagesBean.Profile> backdrops = response.body().getBackdrops();
                     List<String> images = new ArrayList<>();
+
+                    ImageView gallery = (ImageView) findViewById(R.id.slideshow);
+                    final ArrayList<String> imagesURL = new ArrayList<>();
+                    for(int i = 0; i < posters.size(); i++) {
+                        imagesURL.add(i, "https://image.tmdb.org/t/p/w500/" + posters.get(i).getFile_path());
+                    }
+                    for(int i = 0; i < backdrops.size(); i++) {
+                        imagesURL.add(i, "https://image.tmdb.org/t/p/w500/" + backdrops.get(i).getFile_path());
+                    }
+
+                    Collections.shuffle(imagesURL);
+                    gallery.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MovieDetail.this, FullScreenImageGalleryActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArrayList(FullScreenImageGalleryActivity.KEY_IMAGES, imagesURL);
+                            bundle.putInt(FullScreenImageGalleryActivity.KEY_POSITION, 0);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+
+                            FullScreenImageGalleryActivity.setFullScreenImageLoader(MovieDetail.this);
+                        }
+                    });
 
                     for(int j = 0; j < posters.size(); j++) {
                         if(j >= 5)
@@ -240,6 +288,33 @@ public class MovieDetail extends FragmentActivity {
             });
         }else {
             Toast.makeText(this, "Movie not found", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void loadFullScreenImage(final ImageView iv, String imageUrl, int width, final LinearLayout bgLinearLayout) {
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Picasso.with(iv.getContext())
+                    .load(imageUrl)
+                    .resize(width, 0)
+                    .into(iv, new com.squareup.picasso.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            Bitmap bitmap = ((BitmapDrawable) iv.getDrawable()).getBitmap();
+                            Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                                public void onGenerated(Palette palette) {
+                                    Utils.applyPalette(palette, paletteColorType, bgLinearLayout);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
+        } else {
+            iv.setImageDrawable(null);
         }
     }
 }

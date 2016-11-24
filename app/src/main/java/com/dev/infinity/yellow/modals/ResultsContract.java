@@ -1,16 +1,16 @@
 package com.dev.infinity.yellow.modals;
 
-import java.util.List;
-
 /**
  * Created by sumitkumar on 24/11/16.
  */
 
-public class MoviesContract {
+import java.util.List;
+
+public class ResultsContract {
     private int page;
     private int total_results;
     private int total_pages;
-    private List<MovieDetailsBean> results;
+    private List<TVShowDetailBean> results;
 
     public int getPage() {
         return page;
@@ -36,11 +36,11 @@ public class MoviesContract {
         this.total_pages = total_pages;
     }
 
-    public List<MovieDetailsBean> getResults() {
+    public List<TVShowDetailBean> getResults() {
         return results;
     }
 
-    public void setResults(List<MovieDetailsBean> results) {
+    public void setResults(List<TVShowDetailBean> results) {
         this.results = results;
     }
 }

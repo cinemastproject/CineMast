@@ -3,12 +3,13 @@ package network;
 import com.dev.infinity.yellow.modals.CombinedCastDetail;
 import com.dev.infinity.yellow.modals.MovieDetailsBean;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
+import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.modals.PeopleResults;
 import com.dev.infinity.yellow.modals.ProfileDetailBean;
+import com.dev.infinity.yellow.modals.ResultsContract;
 import com.dev.infinity.yellow.modals.TVShowDetailBean;
 import com.dev.infinity.yellow.utils.Constants;
 import com.dev.infinity.yellow.modals.ImagesBean;
-import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.modals.PersonImagesBean;
 import com.dev.infinity.yellow.modals.SearchResultsBean;
 import com.dev.infinity.yellow.modals.SeasonDetailsBean;
@@ -28,6 +29,9 @@ public interface API {
 
     @GET("{path}/similar?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getSimilarMovies(@Path("path") String path);
+
+    @GET("{path}/similar?api_key=" + Constants.API_KEY)
+    Call<ResultsContract> getSimilarShows(@Path("path") String path);
 
     @GET("{path}/recommendations?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getRecommendations(@Path("path") String path);
