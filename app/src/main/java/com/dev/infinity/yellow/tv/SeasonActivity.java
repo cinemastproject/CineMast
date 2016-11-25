@@ -71,6 +71,15 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
         poster = (ImageView) findViewById(R.id.poster);
         name = (TextView) findViewById(R.id.name);
 
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SeasonActivity.this.finish();
+            }
+        });
+
         final String id = getIntent().getStringExtra("ID");
         final int seasonNumber = getIntent().getIntExtra("SEASON_NUMBER", -1);
 

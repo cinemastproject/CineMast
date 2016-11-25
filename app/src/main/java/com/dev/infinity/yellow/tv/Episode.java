@@ -73,6 +73,15 @@ public class Episode extends Activity implements FullScreenImageGalleryAdapter.F
         poster = (ImageView) findViewById(R.id.poster);
         name = (TextView) findViewById(R.id.name);
 
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Episode.this.finish();
+            }
+        });
+
         String id = getIntent().getStringExtra("ID");
         String seasonNumber = getIntent().getStringExtra("SEASON_NUMBER");
         String episodeNumber = getIntent().getStringExtra("EPISODE_NUMBER");

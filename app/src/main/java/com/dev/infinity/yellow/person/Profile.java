@@ -3,9 +3,12 @@ package com.dev.infinity.yellow.person;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.infinity.yellow.R;
+import com.dev.infinity.yellow.tv.Episode;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
@@ -50,6 +53,15 @@ public class Profile extends FragmentActivity {
         birthplace = (TextView) findViewById(R.id.birth_country);
         profileImage = (CircleImageView) findViewById(R.id.person_image);
 
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Profile.this.finish();
+            }
+        });
+
         if(profileId != -1) {
             api.getProfile(profileId).enqueue(new Callback<ProfileDetailBean>() {
                 @Override
@@ -77,7 +89,10 @@ public class Profile extends FragmentActivity {
                     }
                     birthplace.setText(profile.getPlace_of_birth());
                     biography.setText(profile.getBiography());
+
+                    ImageView cover = (ImageView) findViewById(R.id.cover);
                     Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w185/" + profile.getProfile_path()).error(R.drawable.notfound).placeholder(R.drawable.movie).into(profileImage);
+                    Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w500/" + profile.getProfile_path()).error(R.drawable.notfound).placeholder(R.drawable.movie).into(cover);
                 }
 
                 @Override
