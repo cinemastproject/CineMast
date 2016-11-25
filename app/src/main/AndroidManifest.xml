@@ -10,8 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.dev.infinity.yellow.common.HomePage"
+        <activity
+            android:name=".common.HomePage"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,29 +19,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.dev.infinity.yellow.person.Profile" />
-
+        <activity android:name=".person.Profile" />
         <activity
-            android:name="com.dev.infinity.yellow.tv.TVShowDetails"
+            android:name=".tv.TVShowDetails"
             android:label="Series Detail"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.dev.infinity.yellow.movies.MovieDetail"
+            android:name=".movies.MovieDetail"
             android:label="@string/title_activity_movie_detail"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.dev.infinity.yellow.search.MultiSearch"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.dev.infinity.yellow.tv.SeasonActivity"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".search.MultiSearch"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tv.SeasonActivity"
+            android:label="@string/title_activity_movie_detail"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".tv.Episode"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package network;
 
 import com.dev.infinity.yellow.modals.CombinedCastDetail;
+import com.dev.infinity.yellow.modals.EpisodeDetailsBean;
 import com.dev.infinity.yellow.modals.MovieDetailsBean;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
 import com.dev.infinity.yellow.modals.MoviesContract;
@@ -36,6 +37,9 @@ public interface API {
     @GET("{path}/recommendations?api_key=" + Constants.API_KEY)
     Call<MoviesContract> getRecommendations(@Path("path") String path);
 
+    @GET("{path}/recommendations?api_key=" + Constants.API_KEY)
+    Call<ResultsContract> getRecommendedShows(@Path("path") String path);
+
     @GET("{path}/{type}?api_key=" + Constants.API_KEY)
     Call<TVContract> getTVShows(@Path("path") String path, @Path("type") String type, @Query("page") int page);
 
@@ -68,4 +72,13 @@ public interface API {
 
     @GET("{path}/{id}/videos?api_key=" + Constants.API_KEY)
     Call<MovieVideosBean> getVideos(@Path("path") String path, @Path("id") String id);
+
+    @GET("{tv_id}/season/{season_number}/videos?api_key=" + Constants.API_KEY)
+    Call<MovieVideosBean> getSeasonVideos(@Path("tv_id") String tvId, @Path("season_number") String seasonId);
+
+    @GET("{tv_id}/season/{season_number}/episode/{episode_number}/videos?api_key=" + Constants.API_KEY)
+    Call<MovieVideosBean> getSeasonEpisodeVideos(@Path("tv_id") String tvId, @Path("season_number") String seasonId, @Path("episode_number") String episodeNumber);
+
+    @GET("{tv_id}/season/{season_number}/episode/{episode_number}?api_key=" + Constants.API_KEY)
+    Call<EpisodeDetailsBean> getEpisode(@Path("tv_id") String tvId, @Path("season_number") String seasonId, @Path("episode_number") String episodeNumber);
 }

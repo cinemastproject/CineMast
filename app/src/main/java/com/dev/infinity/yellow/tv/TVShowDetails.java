@@ -20,12 +20,9 @@ import android.widget.TextView;
 import com.dev.infinity.yellow.R;
 import com.dev.infinity.yellow.common.MovieVideoAdapter;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
-import com.dev.infinity.yellow.modals.MoviesContract;
 import com.dev.infinity.yellow.modals.ResultsContract;
 import com.dev.infinity.yellow.person.CastingAdapter;
 import com.dev.infinity.yellow.common.GenericAdapter;
-import com.dev.infinity.yellow.movies.MovieDetail;
-import com.dev.infinity.yellow.movies.MoviesAdapter;
 import com.dev.infinity.yellow.person.Profile;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -43,7 +40,6 @@ import java.util.List;
 import com.dev.infinity.yellow.modals.CombinedCastDetail;
 import com.dev.infinity.yellow.modals.GenreDetail;
 import com.dev.infinity.yellow.modals.ImagesBean;
-import com.dev.infinity.yellow.modals.MovieDetailsBean;
 import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
 import com.dev.infinity.yellow.modals.TVShowDetailBean;
 import com.dev.infinity.yellow.utils.Utils;
@@ -280,7 +276,7 @@ public class TVShowDetails extends Activity implements FullScreenImageGalleryAda
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent detailActivity = new Intent(TVShowDetails.this, TVShowDetails.class);
-                        detailActivity.putExtra("ID", showsList.get(position).getId());
+                        detailActivity.putExtra("ID", Integer.parseInt(showsList.get(position).getId()));
                         startActivity(detailActivity);
                     }
                 }));
@@ -295,28 +291,28 @@ public class TVShowDetails extends Activity implements FullScreenImageGalleryAda
             }
         });
 
-        api.getRecommendations(String.valueOf(tvId)).enqueue(new Callback<MoviesContract>() {
+        api.getRecommendedShows(String.valueOf(tvId)).enqueue(new Callback<ResultsContract>() {
             @Override
-            public void onResponse(Call<MoviesContract> call, Response<MoviesContract> response) {
-                final List<MovieDetailsBean> moviesList = response.body().getResults();
+            public void onResponse(Call<ResultsContract> call, Response<ResultsContract> response) {
+                final List<TVShowDetailBean> showsList = response.body().getResults();
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recommendations);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TVShowDetails.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(TVShowDetails.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent detailActivity = new Intent(TVShowDetails.this, MovieDetail.class);
-                        detailActivity.putExtra("ID", moviesList.get(position).getId());
+                        Intent detailActivity = new Intent(TVShowDetails.this, TVShowDetails.class);
+                        detailActivity.putExtra("ID", Integer.parseInt(showsList.get(position).getId()));
                         startActivity(detailActivity);
                     }
                 }));
                 recyclerView.setHasFixedSize(true);
-                MoviesAdapter adapter = new MoviesAdapter(TVShowDetails.this, moviesList);
+                GenericAdapter adapter = new GenericAdapter(TVShowDetails.this, showsList);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<MoviesContract> call, Throwable t) {
+            public void onFailure(Call<ResultsContract> call, Throwable t) {
                 t.printStackTrace();
             }
         });

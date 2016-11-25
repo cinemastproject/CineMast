@@ -1,6 +1,7 @@
 package com.dev.infinity.yellow.modals;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,9 +9,9 @@ import java.util.List;
  */
 public class EpisodeDetailsBean implements Serializable {
     private String air_date;
-    private List<CrewDetails> crewDetailsList;
+    private List<CrewDetails> crew = new ArrayList<>();
     private int episode_number;
-    private List<GuestStarsDetails> guestStarsDetailsList;
+    private List<GuestStarsDetails> guest_stars = new ArrayList<>();
     private String name;
     private String overview;
     private String id;
@@ -26,14 +27,6 @@ public class EpisodeDetailsBean implements Serializable {
 
     public void setAir_date(String air_date) {
         this.air_date = air_date;
-    }
-
-    public List<CrewDetails> getCrewDetailsList() {
-        return crewDetailsList;
-    }
-
-    public void setCrewDetailsList(List<CrewDetails> crewDetailsList) {
-        this.crewDetailsList = crewDetailsList;
     }
 
     public int getEpisode_number() {
@@ -109,11 +102,19 @@ public class EpisodeDetailsBean implements Serializable {
         this.vote_count = vote_count;
     }
 
-    public List<GuestStarsDetails> getGuestStarsDetailsList() {
-        return guestStarsDetailsList;
+    public List<CrewDetails> getCrew() {
+        return crew;
     }
 
-    public void setGuestStarsDetailsList(List<GuestStarsDetails> guestStarsDetailsList) {
-        this.guestStarsDetailsList = guestStarsDetailsList;
+    public void setCrew(List<CrewDetails> crew) {
+        this.crew = crew;
+    }
+
+    public List<GuestStarsDetails> getGuest_stars() {
+        return guest_stars;
+    }
+
+    public void setGuest_stars(List<GuestStarsDetails> guest_stars) {
+        this.guest_stars = guest_stars;
     }
 }

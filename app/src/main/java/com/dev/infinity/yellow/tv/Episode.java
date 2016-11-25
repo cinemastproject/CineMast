@@ -15,13 +15,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dev.infinity.yellow.R;
-import com.dev.infinity.yellow.common.GenericAdapter;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.dev.infinity.yellow.R;
+import com.dev.infinity.yellow.common.GenericAdapter;
 import com.dev.infinity.yellow.common.MovieVideoAdapter;
+import com.dev.infinity.yellow.modals.CrewDetails;
+import com.dev.infinity.yellow.modals.EpisodeDetailsBean;
+import com.dev.infinity.yellow.modals.GuestStarsDetails;
+import com.dev.infinity.yellow.modals.ImagesBean;
 import com.dev.infinity.yellow.modals.MovieVideosBean;
+import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
+import com.dev.infinity.yellow.utils.Utils;
 import com.etiennelawlor.imagegallery.library.activities.FullScreenImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.adapters.FullScreenImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
@@ -32,10 +38,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.dev.infinity.yellow.modals.ImagesBean;
-import com.dev.infinity.yellow.utils.RecyclerItemClickListener;
-import com.dev.infinity.yellow.modals.SeasonDetailsBean;
-import com.dev.infinity.yellow.utils.Utils;
 import network.API;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +45,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SeasonActivity extends Activity implements FullScreenImageGalleryAdapter.FullScreenImageLoader  {
+public class Episode extends Activity implements FullScreenImageGalleryAdapter.FullScreenImageLoader  {
 
     Retrofit retrofit = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -62,7 +64,7 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.season_activity);
+        setContentView(R.layout.activity_episode);
 
         paletteColorType = PaletteColorType.VIBRANT;
 
@@ -71,57 +73,65 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
         poster = (ImageView) findViewById(R.id.poster);
         name = (TextView) findViewById(R.id.name);
 
-        final String id = getIntent().getStringExtra("ID");
-        final int seasonNumber = getIntent().getIntExtra("SEASON_NUMBER", -1);
+        String id = getIntent().getStringExtra("ID");
+        String seasonNumber = getIntent().getStringExtra("SEASON_NUMBER");
+        String episodeNumber = getIntent().getStringExtra("EPISODE_NUMBER");
 
-        api.getSeason(id, String.valueOf(seasonNumber)).enqueue(new Callback<SeasonDetailsBean>() {
+        api.getEpisode(id, seasonNumber, episodeNumber).enqueue(new Callback<EpisodeDetailsBean>() {
             @Override
-            public void onResponse(Call<SeasonDetailsBean> call, Response<SeasonDetailsBean> response) {
-                SeasonDetailsBean bean = response.body();
+            public void onResponse(Call<EpisodeDetailsBean> call, Response<EpisodeDetailsBean> response) {
+                EpisodeDetailsBean bean = response.body();
                 name.setText(bean.getName());
                 overview.setText(bean.getOverview());
-                Picasso.with(SeasonActivity.this).load("https://image.tmdb.org/t/p/w320/" + bean.getPoster_path())
+                Picasso.with(Episode.this).load("https://image.tmdb.org/t/p/w320/" + bean.getStill_path())
                         .error(R.drawable.notfound)
                         .placeholder(R.drawable.movie)
                         .into(poster);
 
-                final List<SeasonDetailsBean.Episode> episodesList = bean.getEpisodes();
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.episodes);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SeasonActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                final List<GuestStarsDetails> startsList = bean.getGuest_stars();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.stars);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Episode.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(layoutManager);
-                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(SeasonActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(Episode.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent detailActivity = new Intent(SeasonActivity.this, Episode.class);
-                        detailActivity.putExtra("ID", id);
-                        detailActivity.putExtra("SEASON_NUMBER", String.valueOf(seasonNumber));
-                        detailActivity.putExtra("EPISODE_NUMBER", String.valueOf(episodesList.get(position).getEpisode_number()));
-                        startActivity(detailActivity);
+                        //Intent detailActivity = new Intent(TVShowDetails.this, SeasonActivity.class);
+                        //detailActivity.putExtra("ID", String.valueOf(tvId));
+                        //detailActivity.putExtra("SEASON_NUMBER", moviesList.get(position).getSeason_number());
+                        //(detailActivity);
                     }
                 }));
                 recyclerView.setHasFixedSize(true);
-                GenericAdapter adapter = new GenericAdapter(SeasonActivity.this, episodesList);
+                GenericAdapter adapter = new GenericAdapter(Episode.this, startsList);
                 recyclerView.setAdapter(adapter);
+
+                final List<CrewDetails> crewList = bean.getCrew();
+                RecyclerView crewRecyclerView = (RecyclerView) findViewById(R.id.crew);
+                RecyclerView.LayoutManager crewLayoutManager = new LinearLayoutManager(Episode.this, LinearLayoutManager.HORIZONTAL, false);
+                crewRecyclerView.setLayoutManager(crewLayoutManager);
+                crewRecyclerView.setHasFixedSize(true);
+                GenericAdapter crewAdapter = new GenericAdapter(Episode.this, crewList);
+                crewRecyclerView.setAdapter(crewAdapter);
             }
 
             @Override
-            public void onFailure(Call<SeasonDetailsBean> call, Throwable t) {
-
+            public void onFailure(Call<EpisodeDetailsBean> call, Throwable t) {
+                t.printStackTrace();
             }
         });
 
-        api.getSeasonVideos(id, String.valueOf(seasonNumber)).enqueue(new Callback<MovieVideosBean>() {
+        api.getSeasonEpisodeVideos(id, seasonNumber, episodeNumber).enqueue(new Callback<MovieVideosBean>() {
             @Override
             public void onResponse(Call<MovieVideosBean> call, Response<MovieVideosBean> response) {
                 final List<MovieVideosBean.Result> movieVideosList = response.body().getResults();
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.video_frames);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SeasonActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Episode.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setHasFixedSize(true);
-                MovieVideoAdapter adapter = new MovieVideoAdapter(SeasonActivity.this, movieVideosList);
+                MovieVideoAdapter adapter = new MovieVideoAdapter(Episode.this, movieVideosList);
                 recyclerView.setAdapter(adapter);
 
-                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(SeasonActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+                recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(Episode.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + movieVideosList.get(position).getKey())));
@@ -135,7 +145,7 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
             }
         });
 
-        api.getImages(id + "/season/" + String.valueOf(seasonNumber)).enqueue(new Callback<ImagesBean>() {
+        api.getImages(id + "/season/" + seasonNumber + "/episode/" + episodeNumber).enqueue(new Callback<ImagesBean>() {
             @Override
             public void onResponse(Call<ImagesBean> call, Response<ImagesBean> response) {
                 List<ImagesBean.Profile> posters = response.body().getPosters();
@@ -156,7 +166,7 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
                 Collections.shuffle(imagesURL);
 
                 for(int i = 0; i < images.size(); i++){
-                    TextSliderView textSliderView = new TextSliderView(SeasonActivity.this);
+                    TextSliderView textSliderView = new TextSliderView(Episode.this);
                     textSliderView
                             .image("https://image.tmdb.org/t/p/w500/" + images.get(i))
                             .setScaleType(BaseSliderView.ScaleType.Fit);
@@ -171,14 +181,14 @@ public class SeasonActivity extends Activity implements FullScreenImageGalleryAd
                 gallery.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(SeasonActivity.this, FullScreenImageGalleryActivity.class);
+                        Intent intent = new Intent(Episode.this, FullScreenImageGalleryActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putStringArrayList(FullScreenImageGalleryActivity.KEY_IMAGES, imagesURL);
                         bundle.putInt(FullScreenImageGalleryActivity.KEY_POSITION, 0);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
-                        FullScreenImageGalleryActivity.setFullScreenImageLoader(SeasonActivity.this);
+                        FullScreenImageGalleryActivity.setFullScreenImageLoader(Episode.this);
                     }
                 });
             }

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.infinity.yellow.R;
+import com.dev.infinity.yellow.modals.CrewDetails;
+import com.dev.infinity.yellow.modals.GuestStarsDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -89,6 +91,22 @@ public class GenericAdapter extends RecyclerView.Adapter<GenericAdapter.ViewHold
             holder.title.setText(item.getName());
             if (item.getPoster_path() != null)
                 Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getPoster_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(holder.poster);
+        }else if(list.get(position) instanceof GuestStarsDetails) {
+            GuestStarsDetails item = (GuestStarsDetails)list.get(position);
+            holder.title.setText(item.getName());
+            if (item.getProfile_path() != null)
+                Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getProfile_path())
+                        .error(R.drawable.notfound)
+                        .placeholder(R.drawable.movie)
+                        .into(holder.poster);
+        }else if(list.get(position) instanceof CrewDetails) {
+            CrewDetails item = (CrewDetails)list.get(position);
+            holder.title.setText(item.getName());
+            if (item.getProfile_path() != null)
+                Picasso.with(context).load("https://image.tmdb.org/t/p/w185/" + item.getProfile_path())
                         .error(R.drawable.notfound)
                         .placeholder(R.drawable.movie)
                         .into(holder.poster);

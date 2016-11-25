@@ -8,7 +8,7 @@ public class CrewDetails implements Serializable {
     private String name;
     private String department;
     private String job;
-    private String profilePath;
+    private String profile_path;
 
     public String getId() {
         return id;
@@ -50,11 +50,11 @@ public class CrewDetails implements Serializable {
         this.job = job;
     }
 
-    public String getProfilePath() {
-        return profilePath;
+    public String getProfile_path() {
+        return profile_path;
     }
 
-    public void setProfilePath(String profilePath) {
-        this.profilePath = profilePath;
+    public void setProfile_path(String profile_path) {
+        this.profile_path = profile_path;
     }
 }

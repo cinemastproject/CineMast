@@ -204,7 +204,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Videos"
-                    android:textColor="#777"
+                    android:textColor="#284569"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textStyle="bold"
@@ -212,8 +212,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center_vertical"
                     android:minHeight="40dp"/>
-
-
+                
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
