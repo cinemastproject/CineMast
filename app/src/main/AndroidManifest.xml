@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dev.infinity.yellow">
+    package="com.dev.infinity.showtime">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".common.HomePage"
+            android:name="com.dev.infinity.showtime.common.HomePage"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,25 +19,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".person.Profile" />
+        <activity android:name="com.dev.infinity.showtime.person.Profile" />
         <activity
-            android:name=".tv.TVShowDetails"
+            android:name="com.dev.infinity.showtime.tv.TVShowDetails"
             android:label="Series Detail"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".movies.MovieDetail"
+            android:name="com.dev.infinity.showtime.movies.MovieDetail"
             android:label="@string/title_activity_movie_detail"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".search.MultiSearch"
+            android:name="com.dev.infinity.showtime.search.MultiSearch"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".tv.SeasonActivity"
+            android:name="com.dev.infinity.showtime.tv.SeasonActivity"
             android:label="@string/title_activity_movie_detail"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".tv.Episode"></activity>
+        <activity android:name="com.dev.infinity.showtime.tv.Episode"></activity>
     </application>
 
 </manifest>

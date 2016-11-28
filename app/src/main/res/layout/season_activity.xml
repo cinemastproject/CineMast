@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.dev.infinity.yellow.movies.MovieDetail">
+    tools:context="com.dev.infinity.showtime.movies.MovieDetail">
 
     <ScrollView
         android:layout_width="match_parent"

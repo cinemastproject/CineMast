@@ -3,12 +3,57 @@
 
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_1a8d57e0eef81bec20414b35f425c73173c02d32.jar" />
+        revision="23.0.3"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-design-25.0.1_1d9b3480db185502f2dd50a29aebff70ec309536.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.0.1_ce1e8a20c7e49af9a41517bb39a79de92e3bd1bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ae809d521d9f7da5337a82edd64eea23a76e788d">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gass-10.0.0_1707a1cdf461ac169856bf694d9bb5acf3191f96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.0.1_342ea21dfec4ad47544d2f83aeba4fee1c604ac8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/transition/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-transition-25.0.1_422e53c0a1fc565044de2e5ace97eca252cb9fcd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c7ed3fd9d5a9687980dac6c504abd91ad3dfa238">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-10.0.0_16787b6e9e97f751f1a3f3602be8c59c083c0ebe.jar" />
     </item>
     <item
         is-multidex="false"
@@ -18,15 +63,6 @@
         revision="23.0.2"
         sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
         <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_3613ee50ed66ade5768b096a05a72a653f4869c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_c533bdf7ac06bcaa7c3a402aeb4b6c9ce9ae4f0c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -48,21 +84,39 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_8bc274dfe7008b1e57d48935b8482370bce1a79b.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.daimajia.slider/library/1.1.5/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="08962e03b6a954c65d4944e092879b7f5ee1208d">
         <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.daimajia.slider-library-1.1.5_3cd359cd0a30803633556f92f1bd50356971ab21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2b410ae1fda134f470276365f4b7f846269e0d23">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-10.0.0_1c8f7654f17789675dbc76523885b91860f225fd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.0.0_2c52df00e26708c4f592fe2c6577f64c0ac0ae1e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.0.1_a8d6dd7a2150145d9e69c225c536a01b1a75eba1.jar" />
     </item>
     <item
         is-multidex="false"
@@ -75,6 +129,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3347c3e7056fabc88bdbd8fdae65ddf2b674d977">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.0.0_2123b5392512c72e2582f719e15b74486e2c6e35.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/sumitkumar/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.1/b9d63507329a7178e026fc334f87587ee5070ac5/gson-2.6.1.jar"
         jumboMode="false"
         optimize="true"
@@ -84,48 +147,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_57b20201b19d2556911d70818cf9324bf3c03d4f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_3397eb9ef92d11ca8e98113fb596446d8f6b5230.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_c5958c1681a00ce76ade650770bfe88ec44abc1e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_c533bdf7ac06bcaa7c3a402aeb4b6c9ce9ae4f0c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_d9f0c6c7a2e320315a8240cf6cc1df4f1440bfc8.jar" />
+        sha1="fb0229499e600b485a276d4e31161a3ae31c144c">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-clearcut-10.0.0_06bf04f649b27f7560ee3f5d53b26b68b7eb540d.jar" />
     </item>
     <item
         is-multidex="false"
@@ -147,12 +174,39 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_1a8d57e0eef81bec20414b35f425c73173c02d32.jar" />
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_2bc182f78d935758a89ec1e2ddf2227734269927.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ce6e6e59212db0893fc36e5b579cf319a84aade8">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.0.0_110dc284cbc7e30d6c386000fccbea3317f1ea38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_c08fb5e4f4cc1945c51d58e3dab47cde88c48257.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="a61005619e43f203768ff3f224137def6f029e50">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-10.0.0_72068786c9afb4271558de1e432ffde42ab5f6a7.jar" />
     </item>
     <item
         is-multidex="false"
@@ -165,39 +219,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_ce7340872381a9ac3d08012162b9d7a71c0b61e8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_c5958c1681a00ce76ade650770bfe88ec44abc1e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_7acce19bee56ba2205a7135410f78c966c4d4e85.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_88e4db72128de6fbe73074ff431ec688b4161eef.jar" />
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.0.1_07a9a1d4d0048dc2d21c0b123221e118f9d55cbb.jar" />
     </item>
     <item
         is-multidex="false"
@@ -210,21 +237,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_57b20201b19d2556911d70818cf9324bf3c03d4f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_8151c69e4d27e9db223dc0dd03c5473159d8e4b1.jar" />
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_007a2e4b9c287426cdfeb5b3dc58d36c8ee41e85.jar" />
     </item>
     <item
         is-multidex="false"
@@ -237,21 +255,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_595a1733c1829813835818f774978dc3b1475866.jar" />
+        revision="23.0.3"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.0.1_60999d4e487f7ab5d8f7fb086e4cb4aa97b32925.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_8151c69e4d27e9db223dc0dd03c5473159d8e4b1.jar" />
+        revision="23.0.3"
+        sha1="73fe8ab7f76e41d0cabbc4fa3399557de52efb2d">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-ads-10.0.0_52d35cff206d2d9f5b7de53f18078f2104ab1c38.jar" />
     </item>
     <item
         is-multidex="false"
@@ -300,102 +318,48 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_aab84c49b72a30dfa87331f54c99695352f9e826.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_606f96d43c9c55e941d0110d470b98502eebd12d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_d9f0c6c7a2e320315a8240cf6cc1df4f1440bfc8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_3f30dae8cbe16f3e09a45c31113d0aaa7d1dfa1e.jar" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.0.1_30b3173a65ba1ac2fbaeccbf5c22ca8e2320599d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_88e4db72128de6fbe73074ff431ec688b4161eef.jar" />
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.0.1_b2a59aff969b3767bc0497c7394a3d96e27f6a7c.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="3b7105277df9a8013468215c451ddefac2499d3a">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-24.2.1_0c83a206af277be38fdf32cd89e69ae13c0b08bc.jar" />
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_dc47e2d851e799bf77d46bff688275538be7b15d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_e7af5dff6139e50c9c984069b7279d012700625a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_758bf79307e104b850d07feb6d3045f433f6f0c8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_595a1733c1829813835818f774978dc3b1475866.jar" />
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.0.1_f025e5bcc27f211246860d80d6af7117fb8a98d8.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_7acce19bee56ba2205a7135410f78c966c4d4e85.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_9989f4c71e8a03dd0f0b6e2afafdedf11175217e.jar" />
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.1_d15f734ae87f40787f988c263a29fd269bd485da.jar" />
     </item>
     <item
         is-multidex="false"
@@ -417,21 +381,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_aab84c49b72a30dfa87331f54c99695352f9e826.jar" />
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.0.1_fb42a7ed2a3056fc719229398ce4a3c88d108cf7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_9989f4c71e8a03dd0f0b6e2afafdedf11175217e.jar" />
+        revision="23.0.3"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.0.1_076430801a4dab43a770e5ef774765540e63f0c8.jar" />
     </item>
     <item
         is-multidex="false"
@@ -444,21 +408,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="3b7105277df9a8013468215c451ddefac2499d3a">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-24.2.1_0c83a206af277be38fdf32cd89e69ae13c0b08bc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_606f96d43c9c55e941d0110d470b98502eebd12d.jar" />
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.0.1_a06026846324dc2ee48378ed1ab5e5d79d88cb8f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -480,12 +435,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_e7af5dff6139e50c9c984069b7279d012700625a.jar" />
+        sha1="849da156edbc1201f5cd6e237524187442a62af3">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-ads-lite-10.0.0_a653d9672294f3292e304ba7f1f15f7b9c83a9ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="75dbc3537bc912d077b3db2f5ac72d5b43644b2c">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.0.0_362655d328c38e0017495b600551aca8d0b68aba.jar" />
     </item>
     <item
         is-multidex="false"
@@ -507,15 +471,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_758bf79307e104b850d07feb6d3045f433f6f0c8.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/sumitkumar/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         optimize="true"
@@ -525,39 +480,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_3f30dae8cbe16f3e09a45c31113d0aaa7d1dfa1e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_ce7340872381a9ac3d08012162b9d7a71c0b61e8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sumitkumar/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_3397eb9ef92d11ca8e98113fb596446d8f6b5230.jar" />
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_a5d55fc8b1ac27772c98520ff0125228bb135cb0.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jar="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/exploded-aar/com.android.support/palette-v7/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_8bc274dfe7008b1e57d48935b8482370bce1a79b.jar" />
+        revision="23.0.3"
+        sha1="783127c8b1d23b84cccc3dc776ca4637d4aba900">
+        <dex dex="/Users/sumitkumar/Projects/CineMast/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-25.0.1_7e197327875c8fbd8ce65a9cda78ea5257841540.jar" />
     </item>
 
 </items>

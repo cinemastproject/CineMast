@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.dev.infinity.yellow.person.Profile">
+        tools:context="com.dev.infinity.showtime.person.Profile">
     <RelativeLayout
         android:orientation="vertical"
         android:background="#FFF"
@@ -84,7 +84,7 @@
                 android:layout_marginRight="16dp"/>
         </LinearLayout>
 
-        <com.dev.infinity.yellow.utils.Triangle
+        <com.dev.infinity.showtime.utils.Triangle
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignBottom="@+id/cover"
